@@ -1,0 +1,9 @@
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe.config
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.MainWindow.resources
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.Properties.Resources.resources
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
+c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
