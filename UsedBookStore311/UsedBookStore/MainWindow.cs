@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UsedBookStore
 {
-     public partial class MainWindow : Form
+     public partial class frmMainWindow : Form
      {
-          public MainWindow()
+          public frmMainWindow()
           {
                InitializeComponent();
           }
@@ -23,6 +23,11 @@ namespace UsedBookStore
           }
 
           private void MainWindow_Load(object sender, EventArgs e)
+          {
+
+          }
+
+          private void button6_Click(object sender, EventArgs e)
           {
 
           }

@@ -7,3 +7,11 @@ c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookS
 c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
 c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
 c:\users\jordan\documents\visual studio 2012\Projects\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.frmMainWindow.resources
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.Properties.Resources.resources
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe.config
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
