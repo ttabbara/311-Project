@@ -12,19 +12,23 @@ namespace UsedBookStore
         public enum Condition { Mint, Good, Damaged }
 
         private string adHeader;
+        private int userID;
         private Book book;
         private double bookPrice;
         private bool used;        
         private string description;
         private string condition;
+        private DateTime timePosted;
+        
 
         public Listing(string title, Book listedBook, double price, bool isUsed, string adDescription, Condition bookCondition)
         {
-            adDescription = title;
+            adHeader = title;
             book = listedBook;
             bookPrice = price;
             used = isUsed;
             description = adDescription;
+            timePosted = DateTime.Now;
 
             if (used)
             {
@@ -41,6 +45,11 @@ namespace UsedBookStore
         {
             get { return adHeader; }
             set { adHeader = value; }
+        }
+        public int UserID
+        {
+             get { return userID; }
+             set { userID = value; }
         }
 
         public Book Book
@@ -71,6 +80,11 @@ namespace UsedBookStore
         {
             get { return condition; }
             set { condition = value; }
+        }
+
+        public DateTime TimePosted
+        {
+             get { return timePosted; }
         }
 
     }

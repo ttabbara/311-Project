@@ -13,6 +13,7 @@ namespace UsedBookStore
         private string author;
         private int edition;
         private long isbn;
+        
 
         //Constructor
         public Book(string bkTitle, string bkAuthor, int bkEdition, long bkIsnb)
