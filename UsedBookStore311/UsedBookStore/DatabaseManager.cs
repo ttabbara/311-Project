@@ -17,7 +17,7 @@ namespace UsedBookStore
           private static readonly String username = "matthew3_311proj;";
           private static readonly String password = "matthew3_311proj;";
           private static readonly String connectionString = "Server=" + hostIP + "Port=" + portNumber + "; Database=" + databaseName + "; Uid=" + username + "; Pwd=" + password;
-          //private stati
+          
           public static void test()
           {
                MySqlConnection conn;

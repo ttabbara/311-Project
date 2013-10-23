@@ -15,6 +15,7 @@ C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bi
 C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
 C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
 C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
+<<<<<<< HEAD
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe.config
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
@@ -25,3 +26,16 @@ C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache
+=======
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe.config
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.NewListingWindow.resources
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.frmMainWindow.resources
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.Properties.Resources.resources
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe
+C:\Users\Eric\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
+>>>>>>> origin/Matthews
+C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.NewListingWindow.resources

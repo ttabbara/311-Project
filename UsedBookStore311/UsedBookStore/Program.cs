@@ -16,7 +16,7 @@ namespace UsedBookStore
           {
                Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
-               Application.Run(new frmMainWindow());
+               Application.Run(new frmMainWindow(new Controller()));
           }
      }
 }

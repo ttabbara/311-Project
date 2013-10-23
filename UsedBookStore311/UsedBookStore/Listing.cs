@@ -9,35 +9,24 @@ namespace UsedBookStore
     class Listing
     {
         //Book conditions
-        public enum Condition { Mint, Good, Damaged }
+        public enum Condition { NotUsed, Mint, Good, Damaged }
 
         private string adHeader;
         private int userID;
         private Book book;
-        private double bookPrice;
-        private bool used;        
+        private double bookPrice;    
         private string description;
-        private string condition;
         private DateTime timePosted;
-        
+        private Condition condition;
 
-        public Listing(string title, Book listedBook, double price, bool isUsed, string adDescription, Condition bookCondition)
+        public Listing(string title, Book listedBook, double price, string adDescription, Condition bookCondition)
         {
             adHeader = title;
             book = listedBook;
             bookPrice = price;
-            used = isUsed;
             description = adDescription;
             timePosted = DateTime.Now;
-
-            if (used)
-            {
-                condition = bookCondition.ToString();
-            }
-            else
-            {
-                condition = Condition.Mint.ToString();
-            }
+            condition = bookCondition;
         }
 
 
@@ -64,19 +53,13 @@ namespace UsedBookStore
             set { bookPrice = value; }
         }
 
-        public bool Used
-        {
-            get { return used; }
-            set { used = value; }
-        }
-
         public string Description
         {
             get { return description; }
             set { description = value; }
         }
 
-        public string BookCondition
+        public Condition BookCondition
         {
             get { return condition; }
             set { condition = value; }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UsedBookStore
 {
-    class Controller
+    public class Controller
     {
          public Controller()
          {
@@ -18,6 +18,11 @@ namespace UsedBookStore
               DatabaseManager.test();
          }
 
+        public void showNewListingWindow()
+        {
+            NewListingWindow newListingWnd = new NewListingWindow(this);
+            newListingWnd.Show();
+        }
 
     }
 }
