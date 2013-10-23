@@ -24,3 +24,4 @@ C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
+C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache

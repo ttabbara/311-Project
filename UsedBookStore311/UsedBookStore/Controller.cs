@@ -9,7 +9,9 @@ namespace UsedBookStore
 {
     class Controller
     {
-         
+         public Controller()
+         {
+         }
 
          public void connectDB()
          {

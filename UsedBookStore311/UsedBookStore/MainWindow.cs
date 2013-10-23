@@ -15,6 +15,8 @@ namespace UsedBookStore
           public frmMainWindow()
           {
                InitializeComponent();
+               Controller controller = new Controller();
+               controller.connectDB();
           }
 
           private void button1_Click(object sender, EventArgs e)

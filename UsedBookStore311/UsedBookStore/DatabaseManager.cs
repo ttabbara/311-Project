@@ -12,32 +12,35 @@ namespace UsedBookStore
      {
           private static readonly int portNumber = 3306;
           private static readonly String host = "www.fasteamwindsor.org";
-          private static readonly String databaseName = "matthew3_311project";
-          private static readonly String username = "matthew3_311proj";
-          private static readonly String password = "matthew3_311proj";
-          private static readonly String connectionString = "Server=" + host + "Port=" + portNumber + "; Database=" + databaseName + "; Uid=" + username + "; Pwd=" + password;
-          
+          private static readonly String hostIP = "50.87.148.158;";
+          private static readonly String databaseName = "matthew3_311project;";
+          private static readonly String username = "matthew3_311proj;";
+          private static readonly String password = "matthew3_311proj;";
+          private static readonly String connectionString = "Server=" + hostIP + "Port=" + portNumber + "; Database=" + databaseName + "; Uid=" + username + "; Pwd=" + password;
+          //private stati
           public static void test()
           {
+               MySqlConnection conn;
                try
                {
-
-                    using (MySqlConnection conn = new MySqlConnection(connectionString))
-                    {
-                         conn.Open();
-                         System.Diagnostics.Debug.Write("Successfully connected to DB");
-                         System.Diagnostics.Debug.Write("\n closing connection.");
-                    }
+                    conn = new MySqlConnection(connectionString);
+                   
+                    conn.Open();
+                    Console.WriteLine("Successfully connected to DB");
+                    Console.WriteLine("\n closing connection.");
+                    conn.Close();
                }
                catch (MySqlException ex)
                {
-                    //switch (ex.Number)
-                    //{
-                    //     case 0:
-                    //          System.Diagnostics.Debug.Write("Cannot connect to server.  Contact administrator");
-                    //     case 1045:
-                    //          System.Diagnostics.Debug.Write("Invalid username/password, please try again");
-                    //}
+                    switch (ex.Number)
+                    {
+                         case 0:
+                              Console.WriteLine("Cannot connect to server.  Contact administrator");
+                              break;
+                         case 1045:
+                              Console.WriteLine("Invalid username/password, please try again");
+                              break;
+                    }
                }
 
           }
