@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Book.cs" />
+    <Compile Include="NewListingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewListingWindow.Designer.cs">
+      <DependentUpon>NewListingWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Listing.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Controller.cs" />
@@ -56,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NewListingWindow.resx">
+      <DependentUpon>NewListingWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>

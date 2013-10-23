@@ -12,9 +12,13 @@ namespace UsedBookStore
 {
      public partial class frmMainWindow : Form
      {
-          public frmMainWindow()
+          Controller controller;
+
+          public frmMainWindow(Controller controller)
           {
                InitializeComponent();
+
+               this.controller = controller;
           }
 
           private void button1_Click(object sender, EventArgs e)
@@ -30,6 +34,11 @@ namespace UsedBookStore
           private void button6_Click(object sender, EventArgs e)
           {
 
+          }
+
+          private void NewListingBtn_Click(object sender, EventArgs e)
+          {
+              this.controller.showNewListingWindow();
           }
      }
 }

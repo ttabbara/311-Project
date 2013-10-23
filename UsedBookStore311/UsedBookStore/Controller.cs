@@ -9,7 +9,11 @@ namespace UsedBookStore
     class Controller
     {
 
-
+        public void showNewListingWindow()
+        {
+            NewListingWindow newListingWnd = new NewListingWindow();
+            newListingWnd.Show();
+        }
 
     }
 }
