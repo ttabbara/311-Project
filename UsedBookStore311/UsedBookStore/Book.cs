@@ -16,12 +16,12 @@ namespace UsedBookStore
         
 
         //Constructor
-        public Book(string bkTitle, string bkAuthor, int bkEdition, long bkIsnb)
+        public Book(string bkTitle, string bkAuthor, int bkEdition, long bkIsbn)
         {
             title = bkTitle;
             author = bkAuthor;
             edition = bkEdition;
-            isbn = bkIsnb;
+            isbn = bkIsbn;
         }
 
 

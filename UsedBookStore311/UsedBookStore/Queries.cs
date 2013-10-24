@@ -13,6 +13,8 @@ namespace UsedBookStore
 
         public static readonly string GET_LAST_BOOK_ID = "SELECT LAST_INSERT_ID() as lastIndex FROM Book";
 
+        public static readonly string REGISTER_USER = "INSERT INTO User (UserName, PassWord, Salt, PhoneNumber, Email, MemberSince) VALUES (@user,@pass, @salt,@phone,@email, CURRENT_TIMESTAMP)";
+
         //TODO: add faculty and subject and course to book
         public static string createBookQuery(Book newBook)
         {
