@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsedBookStore
 {
-    class Listing
+    public class Listing
     {
         //Book conditions
         public enum Condition { NotUsed, Mint, Good, Damaged }

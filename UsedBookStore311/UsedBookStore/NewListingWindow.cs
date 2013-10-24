@@ -51,11 +51,14 @@ namespace UsedBookStore
             string title = this.TitleInput.Text;
             string author = this.AuthorInput.Text;
 
-            string edition = this.EditionInput.SelectedText;
-            int editionNum = Convert.ToInt32(edition);
+            int editionNum = this.EditionInput.SelectedIndex + 1;
 
             string isbn = this.ISBNInput.Text;
             long isbnNum = Convert.ToInt64(isbn);
+
+            //faculty
+            //department
+            //course
 
             Book listedBook = new Book(title, author, editionNum, isbnNum);
 
@@ -82,43 +85,47 @@ namespace UsedBookStore
 
             Listing newListing = new Listing(title, listedBook, priceNum, description, conditionEnum);
 
-            //TODO: Send the listing to the database
-            //DatabaseManager.createListing(newListing);
+            //Send the listing to the database
+            this.controller.createNewListing(newListing);
 
             //move user to the new listing that they just inserted?
         }
 
         private void FacultyCdInput_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int facultyCd = (int) this.FacultyCdInput.SelectedValue;
+            KeyValuePair<string, int> pair = (KeyValuePair<string, int>) this.FacultyCdInput.SelectedItem;
+
+            int facultyCd = pair.Value;
+
             this.updateDepartmentList(facultyCd);
         }
 
         private void initFacultyList()
         {
-            //TODO
             //query and add all faculty codes with names (should return List<KeyValuePairs<string, int>>) (sort it in the SQL)
-            /*
-             * List<KeyValuePair<string, int>> facultyCodes = DatabaseManager.getFacultyCodesWithNames();
-             * 
-             * this.FacultyCdInput.DataSource = new BindingSource(facultyCodes, null);
-             * this.FacultyCdInput.DisplayMember = "Key";
-             * this.FacultyCdInput.ValueMember = "Value";
-             * 
-             * //set index to the first
-            */
+            
+            List<KeyValuePair<string, int>> facultyCodes = this.controller.getFacultyCodesWithNames();
+              
+            this.FacultyCdInput.DataSource = new BindingSource(facultyCodes, null);
+            this.FacultyCdInput.DisplayMember = "Key";
+            this.FacultyCdInput.ValueMember = "Value";
+        
+            //first index is automatically selected and the change event is fired
+            
         }
 
         private void updateDepartmentList(int facultyCd)
         {
-            //query and add all dept codes with names (should return List<KeyValuePairs<string, int>>) (sort it in the SQL)
-            /*
-             * List<string> departmentCodes = DatabaseManager.getDepartmentCodesWithNames((int) this.FacultyCdInput.SelectedItem.Value);
-             * 
-             * this.DepartmentCdInput.DataSource = new BindingSource(facultyCodes, null);
-             * this.DepartmentCdInput.DisplayMember = "Key";
-             * this.DepartmentCdInput.ValueMember = "Value";
-            */
+            //query and add all Subject codes with names (should return List<KeyValuePairs<string, int>>) (sort it in the SQL)
+
+            List<KeyValuePair<string, int>> subjectCodes = this.controller.getSubjectCodesWithNames(facultyCd);
+              
+            this.SubjectCdInput.DataSource = new BindingSource(subjectCodes, null);
+            this.SubjectCdInput.DisplayMember = "Key";
+            this.SubjectCdInput.ValueMember = "Value";
+
+            //already selects the first index
+            
         }
     }
 }
