@@ -1,8 +1,7 @@
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UnitTestProject1.dll
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UsedBookStore.exe
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\MySql.Data.dll
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UsedBookStore.pdb
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\obj\Debug\UnitTestProject1.dll
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
-C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\obj\Debug\UsedBookStoreTest.csprojResolveAssemblyReference.cache
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UsedBookStore.exe
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\MySql.Data.dll
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\bin\Debug\UsedBookStore.pdb
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\tabbarat\Documents\GitHub\311-Project\UsedBookStore311\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

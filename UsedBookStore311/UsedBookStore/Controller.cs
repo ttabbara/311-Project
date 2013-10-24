@@ -24,5 +24,10 @@ namespace UsedBookStore
             newListingWnd.Show();
         }
 
+        public bool verifyLogin(string username, string password)
+        {
+            return DatabaseManager.verifyLogin(username, password);
+        }
+
     }
 }
