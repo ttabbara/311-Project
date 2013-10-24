@@ -73,5 +73,14 @@ namespace UsedBookStore
 
             return false;
         }
+
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+             if(textBox1.Text.Equals("[Search Here]"))
+             {
+                   textBox1.Text = string.Empty;
+             }
+        }
+
     }
 }
