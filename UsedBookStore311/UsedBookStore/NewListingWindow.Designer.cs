@@ -29,19 +29,21 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.PriceInput = new System.Windows.Forms.TextBox();
+            this.AskingPriceLbl = new System.Windows.Forms.Label();
+            this.AllowEmailChk = new System.Windows.Forms.CheckBox();
+            this.AllowPhoneChk = new System.Windows.Forms.CheckBox();
             this.DescriptionLbl = new System.Windows.Forms.Label();
+            this.DescriptionInput = new System.Windows.Forms.TextBox();
             this.HeaderLbl = new System.Windows.Forms.Label();
             this.HeadlineInput = new System.Windows.Forms.TextBox();
-            this.DescriptionInput = new System.Windows.Forms.TextBox();
-            this.CreateListingBtn = new System.Windows.Forms.Button();
-            this.AllowPhoneChk = new System.Windows.Forms.CheckBox();
-            this.AllowEmailChk = new System.Windows.Forms.CheckBox();
             this.BookInfoLbl = new System.Windows.Forms.Label();
+            this.CreateListingBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.FacultyLbl = new System.Windows.Forms.Label();
             this.FacultyCdInput = new System.Windows.Forms.ComboBox();
-            this.DeptCdInput = new System.Windows.Forms.ComboBox();
+            this.SubjectCdInput = new System.Windows.Forms.ComboBox();
             this.CourseCdInput = new System.Windows.Forms.TextBox();
             this.ConditionLbl = new System.Windows.Forms.Label();
             this.ConditionInput = new System.Windows.Forms.ComboBox();
@@ -49,8 +51,6 @@
             this.TitleInput = new System.Windows.Forms.TextBox();
             this.ISBNLbl = new System.Windows.Forms.Label();
             this.ISBNInput = new System.Windows.Forms.TextBox();
-            this.AskingPriceLbl = new System.Windows.Forms.Label();
-            this.PriceInput = new System.Windows.Forms.TextBox();
             this.AuthorInput = new System.Windows.Forms.TextBox();
             this.AuthorLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +74,44 @@
             this.panel1.Size = new System.Drawing.Size(701, 329);
             this.panel1.TabIndex = 0;
             // 
+            // PriceInput
+            // 
+            this.PriceInput.Location = new System.Drawing.Point(174, 245);
+            this.PriceInput.MaxLength = 6;
+            this.PriceInput.Name = "PriceInput";
+            this.PriceInput.Size = new System.Drawing.Size(85, 20);
+            this.PriceInput.TabIndex = 14;
+            // 
+            // AskingPriceLbl
+            // 
+            this.AskingPriceLbl.AutoSize = true;
+            this.AskingPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AskingPriceLbl.Location = new System.Drawing.Point(13, 242);
+            this.AskingPriceLbl.Name = "AskingPriceLbl";
+            this.AskingPriceLbl.Size = new System.Drawing.Size(164, 26);
+            this.AskingPriceLbl.TabIndex = 7;
+            this.AskingPriceLbl.Text = "Asking Price:  $";
+            // 
+            // AllowEmailChk
+            // 
+            this.AllowEmailChk.AutoSize = true;
+            this.AllowEmailChk.Location = new System.Drawing.Point(295, 268);
+            this.AllowEmailChk.Name = "AllowEmailChk";
+            this.AllowEmailChk.Size = new System.Drawing.Size(122, 17);
+            this.AllowEmailChk.TabIndex = 6;
+            this.AllowEmailChk.Text = "Allow E-mail Contact";
+            this.AllowEmailChk.UseVisualStyleBackColor = true;
+            // 
+            // AllowPhoneChk
+            // 
+            this.AllowPhoneChk.AutoSize = true;
+            this.AllowPhoneChk.Location = new System.Drawing.Point(295, 245);
+            this.AllowPhoneChk.Name = "AllowPhoneChk";
+            this.AllowPhoneChk.Size = new System.Drawing.Size(125, 17);
+            this.AllowPhoneChk.TabIndex = 5;
+            this.AllowPhoneChk.Text = "Allow Phone Contact";
+            this.AllowPhoneChk.UseVisualStyleBackColor = true;
+            // 
             // DescriptionLbl
             // 
             this.DescriptionLbl.AutoSize = true;
@@ -83,6 +121,15 @@
             this.DescriptionLbl.Size = new System.Drawing.Size(121, 26);
             this.DescriptionLbl.TabIndex = 3;
             this.DescriptionLbl.Text = "Description";
+            // 
+            // DescriptionInput
+            // 
+            this.DescriptionInput.Location = new System.Drawing.Point(12, 114);
+            this.DescriptionInput.MaxLength = 300;
+            this.DescriptionInput.Multiline = true;
+            this.DescriptionInput.Name = "DescriptionInput";
+            this.DescriptionInput.Size = new System.Drawing.Size(332, 109);
+            this.DescriptionInput.TabIndex = 2;
             // 
             // HeaderLbl
             // 
@@ -102,14 +149,15 @@
             this.HeadlineInput.Size = new System.Drawing.Size(332, 20);
             this.HeadlineInput.TabIndex = 0;
             // 
-            // DescriptionInput
+            // BookInfoLbl
             // 
-            this.DescriptionInput.Location = new System.Drawing.Point(12, 114);
-            this.DescriptionInput.MaxLength = 300;
-            this.DescriptionInput.Multiline = true;
-            this.DescriptionInput.Name = "DescriptionInput";
-            this.DescriptionInput.Size = new System.Drawing.Size(332, 109);
-            this.DescriptionInput.TabIndex = 2;
+            this.BookInfoLbl.AutoSize = true;
+            this.BookInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BookInfoLbl.Location = new System.Drawing.Point(461, 0);
+            this.BookInfoLbl.Name = "BookInfoLbl";
+            this.BookInfoLbl.Size = new System.Drawing.Size(177, 26);
+            this.BookInfoLbl.TabIndex = 1;
+            this.BookInfoLbl.Text = "Book Information";
             // 
             // CreateListingBtn
             // 
@@ -121,36 +169,6 @@
             this.CreateListingBtn.Text = "Create Listing";
             this.CreateListingBtn.UseVisualStyleBackColor = true;
             this.CreateListingBtn.Click += new System.EventHandler(this.CreateListingBtn_Click);
-            // 
-            // AllowPhoneChk
-            // 
-            this.AllowPhoneChk.AutoSize = true;
-            this.AllowPhoneChk.Location = new System.Drawing.Point(295, 245);
-            this.AllowPhoneChk.Name = "AllowPhoneChk";
-            this.AllowPhoneChk.Size = new System.Drawing.Size(125, 17);
-            this.AllowPhoneChk.TabIndex = 5;
-            this.AllowPhoneChk.Text = "Allow Phone Contact";
-            this.AllowPhoneChk.UseVisualStyleBackColor = true;
-            // 
-            // AllowEmailChk
-            // 
-            this.AllowEmailChk.AutoSize = true;
-            this.AllowEmailChk.Location = new System.Drawing.Point(295, 268);
-            this.AllowEmailChk.Name = "AllowEmailChk";
-            this.AllowEmailChk.Size = new System.Drawing.Size(122, 17);
-            this.AllowEmailChk.TabIndex = 6;
-            this.AllowEmailChk.Text = "Allow E-mail Contact";
-            this.AllowEmailChk.UseVisualStyleBackColor = true;
-            // 
-            // BookInfoLbl
-            // 
-            this.BookInfoLbl.AutoSize = true;
-            this.BookInfoLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BookInfoLbl.Location = new System.Drawing.Point(461, 0);
-            this.BookInfoLbl.Name = "BookInfoLbl";
-            this.BookInfoLbl.Size = new System.Drawing.Size(177, 26);
-            this.BookInfoLbl.TabIndex = 1;
-            this.BookInfoLbl.Text = "Book Information";
             // 
             // label1
             // 
@@ -168,9 +186,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(393, 70);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 18);
+            this.label2.Size = new System.Drawing.Size(101, 18);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Department Code:";
+            this.label2.Text = "Subject Code:";
             // 
             // FacultyLbl
             // 
@@ -192,14 +210,14 @@
             this.FacultyCdInput.TabIndex = 5;
             this.FacultyCdInput.SelectedIndexChanged += new System.EventHandler(this.FacultyCdInput_SelectedIndexChanged);
             // 
-            // DeptCdInput
+            // SubjectCdInput
             // 
-            this.DeptCdInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DeptCdInput.FormattingEnabled = true;
-            this.DeptCdInput.Location = new System.Drawing.Point(528, 67);
-            this.DeptCdInput.Name = "DeptCdInput";
-            this.DeptCdInput.Size = new System.Drawing.Size(165, 21);
-            this.DeptCdInput.TabIndex = 6;
+            this.SubjectCdInput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SubjectCdInput.FormattingEnabled = true;
+            this.SubjectCdInput.Location = new System.Drawing.Point(528, 67);
+            this.SubjectCdInput.Name = "SubjectCdInput";
+            this.SubjectCdInput.Size = new System.Drawing.Size(165, 21);
+            this.SubjectCdInput.TabIndex = 6;
             // 
             // CourseCdInput
             // 
@@ -262,24 +280,6 @@
             this.ISBNInput.Size = new System.Drawing.Size(123, 20);
             this.ISBNInput.TabIndex = 13;
             // 
-            // AskingPriceLbl
-            // 
-            this.AskingPriceLbl.AutoSize = true;
-            this.AskingPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AskingPriceLbl.Location = new System.Drawing.Point(13, 242);
-            this.AskingPriceLbl.Name = "AskingPriceLbl";
-            this.AskingPriceLbl.Size = new System.Drawing.Size(164, 26);
-            this.AskingPriceLbl.TabIndex = 7;
-            this.AskingPriceLbl.Text = "Asking Price:  $";
-            // 
-            // PriceInput
-            // 
-            this.PriceInput.Location = new System.Drawing.Point(174, 245);
-            this.PriceInput.MaxLength = 6;
-            this.PriceInput.Name = "PriceInput";
-            this.PriceInput.Size = new System.Drawing.Size(85, 20);
-            this.PriceInput.TabIndex = 14;
-            // 
             // AuthorInput
             // 
             this.AuthorInput.Location = new System.Drawing.Point(533, 172);
@@ -332,7 +332,7 @@
             this.Controls.Add(this.ConditionInput);
             this.Controls.Add(this.ConditionLbl);
             this.Controls.Add(this.CourseCdInput);
-            this.Controls.Add(this.DeptCdInput);
+            this.Controls.Add(this.SubjectCdInput);
             this.Controls.Add(this.CreateListingBtn);
             this.Controls.Add(this.FacultyCdInput);
             this.Controls.Add(this.FacultyLbl);
@@ -365,7 +365,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label FacultyLbl;
         private System.Windows.Forms.ComboBox FacultyCdInput;
-        private System.Windows.Forms.ComboBox DeptCdInput;
+        private System.Windows.Forms.ComboBox SubjectCdInput;
         private System.Windows.Forms.TextBox CourseCdInput;
         private System.Windows.Forms.Label ConditionLbl;
         private System.Windows.Forms.ComboBox ConditionInput;

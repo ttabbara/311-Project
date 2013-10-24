@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsedBookStore
 {
-    class Book
+    public class Book
     {
         //Attributes
         private string title;

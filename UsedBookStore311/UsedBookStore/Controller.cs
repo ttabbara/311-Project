@@ -9,6 +9,8 @@ namespace UsedBookStore
 {
     public class Controller
     {
+        private NewListingWindow newListingWnd;
+
          public Controller()
          {
          }
@@ -20,8 +22,35 @@ namespace UsedBookStore
 
         public void showNewListingWindow()
         {
-            NewListingWindow newListingWnd = new NewListingWindow(this);
+            newListingWnd = new NewListingWindow(this);
             newListingWnd.Show();
+        }
+
+        public void hideNewListingWindow()
+        {
+            newListingWnd.Hide();
+            newListingWnd.Dispose();
+        }
+
+
+        /**
+         * New Listing Code
+         */
+        public List<KeyValuePair<string, int>> getFacultyCodesWithNames()
+        {
+            return DatabaseManager.getFacultyCodesWithNames();
+        }
+
+        public List<KeyValuePair<string, int>> getSubjectCodesWithNames(int facultyCd)
+        {
+            return DatabaseManager.getSubjectCodesWithNames(facultyCd);
+        }
+
+        public void createNewListing(Listing newListing)
+        {
+            DatabaseManager.createNewListing(newListing);
+            this.hideNewListingWindow();
+            //bring user to their new listing
         }
 
     }
