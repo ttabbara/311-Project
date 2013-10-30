@@ -60,7 +60,19 @@ namespace UsedBookStore
             query += newListing.Price + ", '";
             query += newListing.Description + "', '";
             query += condition + "', ";
-            query += "NULL)";
+
+            //output the BLOB (byte array) into the listing
+            if (newListing.Img == null)
+            {
+                query += "DEFAULT(Image), ";
+            }
+            else
+            {
+                query += "@ImageByteArray, ";
+            }
+
+            //deleted date is null by default
+            query += "DEFAULT(Deleted))";
 
             return query;
         }

@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.PriceInput = new System.Windows.Forms.TextBox();
             this.AskingPriceLbl = new System.Windows.Forms.Label();
-            this.AllowEmailChk = new System.Windows.Forms.CheckBox();
             this.AllowPhoneChk = new System.Windows.Forms.CheckBox();
             this.DescriptionLbl = new System.Windows.Forms.Label();
             this.DescriptionInput = new System.Windows.Forms.TextBox();
@@ -55,20 +54,25 @@
             this.AuthorLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.EditionInput = new System.Windows.Forms.ComboBox();
+            this.UploadFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.FileNameLbl = new System.Windows.Forms.Label();
+            this.UploadFileBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.PriceInput);
             this.panel1.Controls.Add(this.AskingPriceLbl);
-            this.panel1.Controls.Add(this.AllowEmailChk);
-            this.panel1.Controls.Add(this.AllowPhoneChk);
             this.panel1.Controls.Add(this.DescriptionLbl);
             this.panel1.Controls.Add(this.DescriptionInput);
             this.panel1.Controls.Add(this.HeaderLbl);
             this.panel1.Controls.Add(this.HeadlineInput);
             this.panel1.Controls.Add(this.BookInfoLbl);
+            this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.CreateListingBtn);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(701, 329);
@@ -76,7 +80,7 @@
             // 
             // PriceInput
             // 
-            this.PriceInput.Location = new System.Drawing.Point(174, 245);
+            this.PriceInput.Location = new System.Drawing.Point(174, 221);
             this.PriceInput.MaxLength = 6;
             this.PriceInput.Name = "PriceInput";
             this.PriceInput.Size = new System.Drawing.Size(85, 20);
@@ -86,26 +90,16 @@
             // 
             this.AskingPriceLbl.AutoSize = true;
             this.AskingPriceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AskingPriceLbl.Location = new System.Drawing.Point(13, 242);
+            this.AskingPriceLbl.Location = new System.Drawing.Point(13, 218);
             this.AskingPriceLbl.Name = "AskingPriceLbl";
             this.AskingPriceLbl.Size = new System.Drawing.Size(164, 26);
             this.AskingPriceLbl.TabIndex = 7;
             this.AskingPriceLbl.Text = "Asking Price:  $";
             // 
-            // AllowEmailChk
-            // 
-            this.AllowEmailChk.AutoSize = true;
-            this.AllowEmailChk.Location = new System.Drawing.Point(295, 268);
-            this.AllowEmailChk.Name = "AllowEmailChk";
-            this.AllowEmailChk.Size = new System.Drawing.Size(122, 17);
-            this.AllowEmailChk.TabIndex = 6;
-            this.AllowEmailChk.Text = "Allow E-mail Contact";
-            this.AllowEmailChk.UseVisualStyleBackColor = true;
-            // 
             // AllowPhoneChk
             // 
             this.AllowPhoneChk.AutoSize = true;
-            this.AllowPhoneChk.Location = new System.Drawing.Point(295, 245);
+            this.AllowPhoneChk.Location = new System.Drawing.Point(115, 285);
             this.AllowPhoneChk.Name = "AllowPhoneChk";
             this.AllowPhoneChk.Size = new System.Drawing.Size(125, 17);
             this.AllowPhoneChk.TabIndex = 5;
@@ -116,7 +110,7 @@
             // 
             this.DescriptionLbl.AutoSize = true;
             this.DescriptionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLbl.Location = new System.Drawing.Point(122, 85);
+            this.DescriptionLbl.Location = new System.Drawing.Point(122, 61);
             this.DescriptionLbl.Name = "DescriptionLbl";
             this.DescriptionLbl.Size = new System.Drawing.Size(121, 26);
             this.DescriptionLbl.TabIndex = 3;
@@ -124,7 +118,7 @@
             // 
             // DescriptionInput
             // 
-            this.DescriptionInput.Location = new System.Drawing.Point(12, 114);
+            this.DescriptionInput.Location = new System.Drawing.Point(12, 90);
             this.DescriptionInput.MaxLength = 300;
             this.DescriptionInput.Multiline = true;
             this.DescriptionInput.Name = "DescriptionInput";
@@ -135,7 +129,7 @@
             // 
             this.HeaderLbl.AutoSize = true;
             this.HeaderLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeaderLbl.Location = new System.Drawing.Point(134, 33);
+            this.HeaderLbl.Location = new System.Drawing.Point(134, 9);
             this.HeaderLbl.Name = "HeaderLbl";
             this.HeaderLbl.Size = new System.Drawing.Size(98, 26);
             this.HeaderLbl.TabIndex = 1;
@@ -143,7 +137,7 @@
             // 
             // HeadlineInput
             // 
-            this.HeadlineInput.Location = new System.Drawing.Point(12, 62);
+            this.HeadlineInput.Location = new System.Drawing.Point(12, 38);
             this.HeadlineInput.MaxLength = 75;
             this.HeadlineInput.Name = "HeadlineInput";
             this.HeadlineInput.Size = new System.Drawing.Size(332, 20);
@@ -316,6 +310,41 @@
             this.EditionInput.Size = new System.Drawing.Size(67, 21);
             this.EditionInput.TabIndex = 17;
             // 
+            // UploadFileDialog
+            // 
+            this.UploadFileDialog.FileName = "UploadFileDialog";
+            // 
+            // FileNameLbl
+            // 
+            this.FileNameLbl.AutoSize = true;
+            this.FileNameLbl.Location = new System.Drawing.Point(112, 256);
+            this.FileNameLbl.Name = "FileNameLbl";
+            this.FileNameLbl.Size = new System.Drawing.Size(40, 13);
+            this.FileNameLbl.TabIndex = 15;
+            this.FileNameLbl.Text = "No File";
+            // 
+            // UploadFileBtn
+            // 
+            this.UploadFileBtn.Location = new System.Drawing.Point(15, 251);
+            this.UploadFileBtn.Name = "UploadFileBtn";
+            this.UploadFileBtn.Size = new System.Drawing.Size(91, 22);
+            this.UploadFileBtn.TabIndex = 16;
+            this.UploadFileBtn.Text = "Upload Image";
+            this.UploadFileBtn.UseVisualStyleBackColor = true;
+            this.UploadFileBtn.Click += new System.EventHandler(this.UploadFileBtn_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.FileNameLbl);
+            this.groupBox1.Controls.Add(this.UploadFileBtn);
+            this.groupBox1.Controls.Add(this.AllowPhoneChk);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(384, 317);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Listing Information";
+            // 
             // NewListingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,7 +362,6 @@
             this.Controls.Add(this.ConditionLbl);
             this.Controls.Add(this.CourseCdInput);
             this.Controls.Add(this.SubjectCdInput);
-            this.Controls.Add(this.CreateListingBtn);
             this.Controls.Add(this.FacultyCdInput);
             this.Controls.Add(this.FacultyLbl);
             this.Controls.Add(this.label2);
@@ -343,6 +371,8 @@
             this.Text = "New Listing";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,7 +387,6 @@
         private System.Windows.Forms.TextBox DescriptionInput;
         private System.Windows.Forms.TextBox PriceInput;
         private System.Windows.Forms.Label AskingPriceLbl;
-        private System.Windows.Forms.CheckBox AllowEmailChk;
         private System.Windows.Forms.CheckBox AllowPhoneChk;
         private System.Windows.Forms.Button CreateListingBtn;
         private System.Windows.Forms.Label BookInfoLbl;
@@ -377,5 +406,9 @@
         private System.Windows.Forms.Label AuthorLbl;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox EditionInput;
+        private System.Windows.Forms.Button UploadFileBtn;
+        private System.Windows.Forms.Label FileNameLbl;
+        private System.Windows.Forms.OpenFileDialog UploadFileDialog;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

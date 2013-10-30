@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +47,28 @@ namespace UsedBookStore
 
         }
 
+        /* BLOB INSTRUCTIONS */
+        //Blob instructions for reading
+            //Byte[] rawImageData = (Byte[]) reader.Items["Image"]; //("Image" is the BLOB column, reader is MySqlDataReader)
+        //Turn into image using
+            //DatabaseManager.byteArrayToImage(rawImageData); //turns raw byte data into an Image object
+        //Turn Image into BLOB using:
+            //DatabaseManager.imageToByteArray(img); //turns img of type Image into a byte array for insert/update to a BLOB field
+
+        /* Image manipulation functions */
+        public static byte[] imageToByteArray(System.Drawing.Image imageIn)
+        {
+            MemoryStream ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+            return ms.ToArray();
+        }
+
+        public static Image byteArrayToImage(byte[] byteArrayIn)
+        {
+                MemoryStream ms = new MemoryStream(byteArrayIn);
+                Image returnImage = Image.FromStream(ms);
+                return returnImage;
+        }
 
         public static bool verifyLogin(string userName, string passWord)
         {   
@@ -192,10 +216,11 @@ namespace UsedBookStore
 
                  //add the listing
                  cmd.CommandText = Queries.createListingQuery(newListing, lastIndex);
+                 cmd.Parameters.AddWithValue("@ImageByteArray", imageToByteArray(newListing.Img));
                  cmd.ExecuteNonQuery();
 
                  conn.Close();
              }
          }
-     }
+    }
 }

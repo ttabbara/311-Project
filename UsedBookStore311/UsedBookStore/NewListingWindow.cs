@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,30 @@ namespace UsedBookStore
     public partial class NewListingWindow : Form
     {
         Controller controller;
+
+        bool hasError = false;
+        string error = "";
+
+       Image img = null;
+
+        public void displayError()
+        {
+            //create message box to display error
+            MessageBox.Show("Fix the following to increase ad views:\n" + error);
+        }
+
+        public void addError(string msg)
+        {
+            hasError = true;
+            error += "- " + msg + "\n";
+        }
+
+        public void clearError()
+        {
+            hasError = false;
+            error = "";
+        }
+
 
         public NewListingWindow(Controller controller)
         {
@@ -49,12 +74,32 @@ namespace UsedBookStore
         {
             //create the book
             string title = this.TitleInput.Text;
+            if (title.Length == 0)
+            {
+                this.addError("Please provide a book title.");
+            }
+
             string author = this.AuthorInput.Text;
+            if (author.Length == 0)
+            {
+                this.addError("Please provide the book's author.");
+            }
 
             int editionNum = this.EditionInput.SelectedIndex + 1;
 
             string isbn = this.ISBNInput.Text;
-            long isbnNum = Convert.ToInt64(isbn);
+            long isbnNum = 0;
+            if (isbn.Length != 0)
+            {
+                try
+                {
+                    isbnNum = Convert.ToInt64(isbn);
+                }
+                catch (Exception except)
+                {
+                    this.addError("Please provide a proper ISBN value.");
+                }
+            }
 
             //TODO
             //faculty
@@ -62,9 +107,17 @@ namespace UsedBookStore
             //course
 
             Book listedBook = new Book(title, author, editionNum, isbnNum);
+            if (listedBook == null)
+            {
+                this.addError("Error 1001: The book object could not be created.");
+            }
 
             //create the listing
             string header = this.HeadlineInput.Text;
+            if (header.Length < 5)
+            {
+                this.addError("This headline is too short. Please give a headline 5 or more characters.");
+            }
 
             string price = this.PriceInput.Text;
             double priceNum = 0.0;
@@ -77,19 +130,36 @@ namespace UsedBookStore
             }
             catch (Exception except)
             {
-                Console.WriteLine(except.Message);
+                this.addError("This is not a valid price.");
             }
 
             string description = this.DescriptionInput.Text;
+            if (description.Length == 0)
+            {
+                this.addError("Please provide a description.");
+            }
     
             Listing.Condition conditionEnum = (Listing.Condition) this.ConditionInput.SelectedValue;
 
-            Listing newListing = new Listing(title, listedBook, priceNum, description, conditionEnum);
+            //create listing using raw image data, whether null or not (check null in insert query)
+            Listing newListing = new Listing(title, listedBook, priceNum, description, conditionEnum, img);
+            if (newListing == null)
+            {
+                this.addError("Error 1002: The listing could not be created.");
+            }
 
-            //Send the listing to the database
-            this.controller.createNewListing(newListing);
+            if (this.hasError) //one or more errors, display them
+            {
+                this.displayError();
+                this.clearError();
+            }
+            else //has no errors
+            {
+                //Send the listing to the database
+                this.controller.createNewListing(newListing);
 
-            //move user to the new listing that they just inserted?
+                //TODO: move user to the new listing that they just inserted?
+            }
         }
 
         private void FacultyCdInput_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,6 +197,41 @@ namespace UsedBookStore
 
             //already selects the first index
             
+        }
+
+        private void UploadFileBtn_Click(object sender, EventArgs e)
+        {
+            UploadFileDialog.Filter = "Image|*.jpeg;*.jpg;*.png;*.gif;*.bmp";
+            DialogResult result = UploadFileDialog.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                string filename = UploadFileDialog.FileName;
+
+                img = Image.FromFile(filename);
+                if (img == null)
+                {
+                    MessageBox.Show("Could not convert image.");
+                }
+                else
+                {
+                    //Image too large
+                    Size imgSize = img.Size;
+                    if (imgSize.Height * imgSize.Width > 1048576)
+                    {
+                        MessageBox.Show("Image is too large, 1024x1024 pixel limit.");
+                        img = null;
+                    }
+                    else //Everything was okay
+                    {
+                        FileNameLbl.Text = filename;
+                    }
+                }
+            }
+            else //Dialog not okay
+            {
+                img = null;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,9 @@ namespace UsedBookStore
         private string description;
         private DateTime timePosted;
         private Condition condition;
+        private Image img;
 
-        public Listing(string title, Book listedBook, double price, string adDescription, Condition bookCondition)
+        public Listing(string title, Book listedBook, double price, string adDescription, Condition bookCondition, Image img)
         {
             adHeader = title;
             book = listedBook;
@@ -27,6 +29,7 @@ namespace UsedBookStore
             description = adDescription;
             timePosted = DateTime.Now;
             condition = bookCondition;
+            this.img = img;
         }
 
 
@@ -68,6 +71,12 @@ namespace UsedBookStore
         public DateTime TimePosted
         {
              get { return timePosted; }
+        }
+
+        public Image Img
+        {
+            get { return this.img; }
+            set { this.img = value; }
         }
 
     }
