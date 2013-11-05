@@ -74,13 +74,25 @@ namespace UsedBookStore
             return false;
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
+        private void searchBox_Click(object sender, EventArgs e)
         {
-             if(textBox1.Text.Equals("[Search Here]"))
+             if(searchBox.Text.Equals("[Search Here]"))
              {
-                   textBox1.Text = string.Empty;
+                   searchBox.Text = string.Empty;
              }
         }
+
+        private void searchBox_CheckEnter(object sender, KeyPressEventArgs e)
+        {
+             if (e.KeyChar == (char)13)
+             {
+                  //pass current searchBar text and selected comboBox item
+                  controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString());
+			   statusBar.Text = "Searching...";
+             }
+        }
+
+
 
     }
 }

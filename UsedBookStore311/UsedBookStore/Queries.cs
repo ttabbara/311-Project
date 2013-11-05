@@ -77,5 +77,28 @@ namespace UsedBookStore
             return query;
         }
 
+        public static string createSearchQuery(string searchText, string searchCriteria)
+        {
+             string query = null;
+
+             switch (searchCriteria)
+             {
+                  case "Author":
+                       query = "SELECT * FROM Listing L Where L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Author COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
+                       break;
+                  case "Course Code":
+                       break;
+                  case "ISBN":
+                       query = "SELECT * FROM Listing L WHERE L.BookID IN (SELECT B.BookID FROM Book B WHERE B.ISBN = " + "'" + searchText+ "')";
+                       break;
+                  case "Title":
+                       query = "SELECT * FROM Listing L WHERE L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Title COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
+                       break;
+                  default:
+                       break;
+             }
+             return query;
+        }
+
     }
 }

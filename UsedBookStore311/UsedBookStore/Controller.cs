@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -58,6 +59,13 @@ namespace UsedBookStore
 
             //bring user to their new listing
 
+        }
+	   //searchListings returns a filled DataTable based on the searchBox input
+        public DataTable searchListings(string searchText, string searchCriteria)
+        {
+             string query = Queries.createSearchQuery(searchText, searchCriteria);
+		   DataTable searchDT = DatabaseManager.getQueryDataSet(query);
+		   return searchDT;
         }
 
     }
