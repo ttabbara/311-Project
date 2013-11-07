@@ -30,7 +30,7 @@ namespace UsedBookStore
             }
             else
             {
-                Form loginForm = new frmLogin(this);
+                Form loginForm = new frmLogin(this, controller);
                 loginForm.Visible = true;
             }
         }
@@ -90,6 +90,16 @@ namespace UsedBookStore
                   controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString());
 			   statusBar.Text = "Searching...";
              }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
 
 

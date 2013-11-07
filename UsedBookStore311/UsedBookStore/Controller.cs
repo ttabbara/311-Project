@@ -11,6 +11,7 @@ namespace UsedBookStore
     public class Controller
     {
         private NewListingWindow newListingWnd;
+        private User currentUser;
 
          public Controller()
          {
@@ -19,6 +20,16 @@ namespace UsedBookStore
          public void connectDB()
          {
               DatabaseManager.test();
+         }
+
+         public void nullifyUser()
+         {
+             this.currentUser = null;
+         }
+
+         public void setUser(User someUser)
+         {
+             currentUser = someUser;
          }
 
         public void showNewListingWindow()
