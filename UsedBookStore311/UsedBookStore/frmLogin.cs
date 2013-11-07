@@ -13,11 +13,13 @@ namespace UsedBookStore
     public partial class frmLogin : Form
     {
         frmMainWindow originalForm;
+        Controller controller;
 
-        public frmLogin(Form original)
+        public frmLogin(Form original, Controller c)
         {
             InitializeComponent();
             originalForm = (frmMainWindow)original;
+            controller = c;
         }
 
         //Register Button
@@ -36,6 +38,8 @@ namespace UsedBookStore
             if (DatabaseManager.registerUser(txtRegUser.Text, txtRegPW.Text, "TODO", txtPhone.Text, txtEmail.Text))
             {
                 originalForm.toggleLoginButton();
+                //put toggle greeting
+                controller.setUser(new User(txtUser.Text, txtPass.Text, txtPhone.Text, txtEmail.Text));
                 this.Close();
                 MessageBox.Show("Successfully Registered!", "Registration Successful");
             }
@@ -50,6 +54,7 @@ namespace UsedBookStore
             if (DatabaseManager.verifyLogin(txtUser.Text, txtPass.Text))
             {
                 originalForm.toggleLoginButton();
+                controller.setUser(new User(txtUser.Text, txtPass.Text));
                 this.Close();
             }
             else
@@ -59,6 +64,11 @@ namespace UsedBookStore
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
         {
 
         }

@@ -30,7 +30,7 @@ namespace UsedBookStore
             }
             else
             {
-                Form loginForm = new frmLogin(this);
+                Form loginForm = new frmLogin(this, controller);
                 loginForm.Visible = true;
             }
         }

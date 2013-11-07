@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsedBookStore
 {
-    class User
+    public class User
     {
         //Attributes of user
         
@@ -27,6 +27,12 @@ namespace UsedBookStore
             userEmail = email;
             userPhoneNumber = phoneNumber;
             userListings = new List<Listing>();
+        }
+
+        public User(string userName, string passWord)
+        {            
+            username = userName;
+            password = passWord;
         }
 
         public string Username
