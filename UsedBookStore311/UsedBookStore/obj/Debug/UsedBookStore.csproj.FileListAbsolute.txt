@@ -21,3 +21,14 @@ C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
 C:\Users\Jordan\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe.config
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.exe
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.pdb
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.exe
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\bin\Debug\UsedBookStore.pdb
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csprojResolveAssemblyReference.cache
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.frmLogin.resources
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.NewListingWindow.resources
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.frmMainWindow.resources
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.Properties.Resources.resources
+C:\Users\George\Documents\GitHub\311-Project\UsedBookStore311\UsedBookStore\obj\Debug\UsedBookStore.csproj.GenerateResource.Cache
