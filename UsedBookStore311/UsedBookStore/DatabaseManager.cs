@@ -228,21 +228,26 @@ namespace UsedBookStore
 		{
 
 			MySqlConnection conn = null;
-			try
-			{
-				conn = DatabaseManager.getNewConnection();
-				//query DB and return results inside DataTable
-				MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-				DataSet ds = new DataSet();
-				adapter.Fill(ds, "SEARCHED_LISTINGS");
-				DataTable dt = ds.Tables["SEARCHED_LISTINGS"];
+            try
+            {
+                conn = DatabaseManager.getNewConnection();
+                //query DB and return results inside DataTable
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "SEARCHED_LISTINGS");
+                DataTable dt = ds.Tables["SEARCHED_LISTINGS"];
 
-				return dt;
-			}
-			catch (MySqlException ex)
-			{
-				Console.WriteLine("Error: {0}", ex.ToString());
-			}
+                return dt;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
+
 			return null;
 		}
 

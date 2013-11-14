@@ -38,7 +38,7 @@ namespace UsedBookStore
             if (DatabaseManager.registerUser(txtRegUser.Text, txtRegPW.Text, "TODO", txtPhone.Text, txtEmail.Text))
             {
                 originalForm.toggleLoginButton();
-                //put toggle greeting
+                originalForm.toggleGreeting(txtUser.Text);
                 controller.setUser(new User(txtUser.Text, txtPass.Text, txtPhone.Text, txtEmail.Text));
                 this.Close();
                 MessageBox.Show("Successfully Registered!", "Registration Successful");
@@ -50,10 +50,11 @@ namespace UsedBookStore
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {           
+        {
             if (DatabaseManager.verifyLogin(txtUser.Text, txtPass.Text))
             {
                 originalForm.toggleLoginButton();
+                originalForm.toggleGreeting(txtUser.Text);
                 controller.setUser(new User(txtUser.Text, txtPass.Text));
                 this.Close();
             }
