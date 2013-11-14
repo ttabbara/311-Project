@@ -19,15 +19,22 @@ namespace UsedBookStore
             InitializeComponent();
             this.controller = controller;
             searchComboBox.SelectedIndex = 3;
+
+            controller.setMainWindow(this);
+
+            btnSettings.Visible = false;
+            NewListingBtn.Visible = false;
+            MyListingBtn.Visible = false;
+            RecBookBtn.Visible = false;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (isLoggedIn())
+            if (controller.isUserLoggedIn())
             {
                 toggleLoginButton();
                 toggleGreeting("shut off");
-                controller.nullifyUser();
+                controller.userLogout();
             }
             else
             {
@@ -48,31 +55,30 @@ namespace UsedBookStore
 
         private void NewListingBtn_Click(object sender, EventArgs e)
         {
-            this.controller.showNewListingWindow();
+            if (controller.getUser() != null)
+                this.controller.showNewListingWindow();
         }
 
         public void toggleLoginButton()
         {
-            if (btnLogin.Text.Equals("Login"))
+            if (this.controller.isUserLoggedIn())
             {
                 btnLogin.Text = "Logout";
                 btnSettings.Visible = true;
+
+                NewListingBtn.Visible = true;
+                MyListingBtn.Visible = true;
+                RecBookBtn.Visible = true;
             }
             else
             {
                 btnLogin.Text = "Login";
                 btnSettings.Visible = false;
-            }
-        }
 
-        public bool isLoggedIn()
-        {
-            if (btnLogin.Text.Equals("Logout"))
-            {
-                return true;
+                NewListingBtn.Visible = false;
+                MyListingBtn.Visible = false;
+                RecBookBtn.Visible = false;
             }
-
-            return false;
         }
 
         private void searchBox_Click(object sender, EventArgs e)

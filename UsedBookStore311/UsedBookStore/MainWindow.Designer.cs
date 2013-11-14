@@ -35,8 +35,8 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.searchComboBox = new System.Windows.Forms.ComboBox();
             this.NewListingBtn = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.MyListingBtn = new System.Windows.Forms.Button();
+            this.RecBookBtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dgvSearchResults = new System.Windows.Forms.DataGridView();
             this.adNumberCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +78,7 @@
             // 
             this.toolStripStatusLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(60, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(54, 17);
             this.toolStripStatusLabel1.Text = "Welcome!";
             // 
             // btnLogin
@@ -138,26 +138,26 @@
             this.NewListingBtn.UseVisualStyleBackColor = false;
             this.NewListingBtn.Click += new System.EventHandler(this.NewListingBtn_Click);
             // 
-            // button3
+            // MyListingBtn
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.Location = new System.Drawing.Point(12, 84);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(111, 37);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "My Listings";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.MyListingBtn.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.MyListingBtn.Location = new System.Drawing.Point(12, 84);
+            this.MyListingBtn.Name = "MyListingBtn";
+            this.MyListingBtn.Size = new System.Drawing.Size(111, 37);
+            this.MyListingBtn.TabIndex = 12;
+            this.MyListingBtn.Text = "My Listings";
+            this.MyListingBtn.UseVisualStyleBackColor = false;
+            this.MyListingBtn.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // RecBookBtn
             // 
-            this.button4.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button4.Location = new System.Drawing.Point(12, 127);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(111, 37);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Recommended Books";
-            this.button4.UseVisualStyleBackColor = false;
+            this.RecBookBtn.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.RecBookBtn.Location = new System.Drawing.Point(12, 127);
+            this.RecBookBtn.Name = "RecBookBtn";
+            this.RecBookBtn.Size = new System.Drawing.Size(111, 37);
+            this.RecBookBtn.TabIndex = 13;
+            this.RecBookBtn.Text = "Recommended Books";
+            this.RecBookBtn.UseVisualStyleBackColor = false;
             // 
             // button6
             // 
@@ -359,8 +359,8 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnOpenAd);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.RecBookBtn);
+            this.Controls.Add(this.MyListingBtn);
             this.Controls.Add(this.NewListingBtn);
             this.Controls.Add(this.searchComboBox);
             this.Controls.Add(this.searchBox);
@@ -391,8 +391,8 @@
           private System.Windows.Forms.TextBox searchBox;
           private System.Windows.Forms.ComboBox searchComboBox;
           private System.Windows.Forms.Button NewListingBtn;
-          private System.Windows.Forms.Button button3;
-          private System.Windows.Forms.Button button4;
+          private System.Windows.Forms.Button MyListingBtn;
+          private System.Windows.Forms.Button RecBookBtn;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.DataGridView dgvSearchResults;

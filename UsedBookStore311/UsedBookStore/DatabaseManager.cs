@@ -196,7 +196,7 @@ namespace UsedBookStore
 			return result;
 		}
 
-		public static void createNewListing(Listing newListing)
+		public static void createNewListing(Listing newListing, User currentUser)
 		{
 			MySqlConnection conn = DatabaseManager.getNewConnection();
 
@@ -216,7 +216,7 @@ namespace UsedBookStore
 				reader.Close();
 
 				//add the listing
-				cmd.CommandText = Queries.createListingQuery(newListing, lastIndex);
+				cmd.CommandText = Queries.createListingQuery(newListing, lastIndex, currentUser);
 				cmd.Parameters.AddWithValue("@ImageByteArray", imageToByteArray(newListing.Img));
 				cmd.ExecuteNonQuery();
 

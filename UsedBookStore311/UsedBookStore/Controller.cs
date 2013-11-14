@@ -4,49 +4,71 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace UsedBookStore
 {
     public class Controller
     {
         private NewListingWindow newListingWnd;
+        private frmMainWindow mainWindow;
         private User currentUser;
 
          public Controller()
          {
+             mainWindow = new frmMainWindow(this);
          }
 
-         public void connectDB()
+         public void userLogin(User user)
          {
-              DatabaseManager.test();
+             this.currentUser = user;
+
+             this.mainWindow.toggleLoginButton();
+             this.mainWindow.toggleGreeting(user.Username);
          }
 
-         public void nullifyUser()
+         public void userLogout()
          {
              this.currentUser = null;
+             this.mainWindow.toggleLoginButton();
          }
 
-         public void setUser(User someUser)
+         public void setMainWindow(frmMainWindow wnd)
          {
-             currentUser = someUser;
+             this.mainWindow = wnd;
+         }
+
+         public bool isUserLoggedIn()
+         {
+             return (currentUser != null);
+         }
+
+         public User getUser()
+         {
+             return currentUser;
+         }
+
+         public void showLoginMessage()
+         {
+             MessageBox.Show("Please login to use this feature.");
          }
 
         public void showNewListingWindow()
         {
-            newListingWnd = new NewListingWindow(this);
-            newListingWnd.Show();
+            if (this.isUserLoggedIn())
+            {
+                newListingWnd = new NewListingWindow(this);
+                newListingWnd.Show();
+            }
+            else
+            {
+                this.showLoginMessage();
+            }
         }
 
         public bool verifyLogin(string username, string password)
         {
             return DatabaseManager.verifyLogin(username, password);
-        }
-
-        public void hideNewListingWindow()
-        {
-            newListingWnd.Hide();
-            newListingWnd.Dispose();
         }
 
 
@@ -65,12 +87,18 @@ namespace UsedBookStore
 
         public void createNewListing(Listing newListing)
         {
-            DatabaseManager.createNewListing(newListing);
+            DatabaseManager.createNewListing(newListing, this.currentUser);
             this.hideNewListingWindow();
 
             //bring user to their new listing
-
         }
+
+        public void hideNewListingWindow()
+        {
+            newListingWnd.Hide();
+            newListingWnd.Dispose();
+        }
+
 	   //searchListings returns a filled DataTable based on the searchBox input
         public DataTable searchListings(string searchText, string searchCriteria)
         {
@@ -79,5 +107,26 @@ namespace UsedBookStore
 		   return searchDT;
         }
 
+        public bool tryRegister(string txtRegUser, string txtRegPW, string todo, string txtPhone, string txtEmail)
+        {
+            if (DatabaseManager.registerUser(txtRegUser, txtRegPW, todo, txtPhone, txtEmail))
+            {
+                this.userLogin(new User(txtRegUser, txtPhone, txtEmail));
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool tryLogin(string txtUser, string txtPass)
+        {
+            if (DatabaseManager.verifyLogin(txtUser, txtPass))
+            {
+                this.userLogin(new User(txtUser));
+                return true;
+            }
+
+            return false;
+        }
     }
 }
