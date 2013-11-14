@@ -12,39 +12,36 @@ namespace UsedBookStore
         
         private int userID;
         private string username;
-        private string password;
         private string userPhoneNumber;
         private string userEmail;
         private List<Listing> userListings;
         private DateTime lastLogin;
         private DateTime memberSince;
           
-        public User(string userName, string passWord, string phoneNumber, string email)
+        public User(string userName, string phoneNumber, string email)
         {
             username = userName;
-            password = passWord;
             memberSince = DateTime.Now;
             userEmail = email;
             userPhoneNumber = phoneNumber;
             userListings = new List<Listing>();
         }
 
-        public User(string userName, string passWord)
+        public User(string userName)
         {            
             username = userName;
-            password = passWord;
+        }
+
+        public int ID
+        {
+            get { return userID; }
+            set { userID = value; }
         }
 
         public string Username
         {
             get { return username; }
             set { username = value; }
-        }
-
-        public string Password
-        {
-             get { return password; }
-             set { password = value; }
         }
 
         public DateTime MemberSince

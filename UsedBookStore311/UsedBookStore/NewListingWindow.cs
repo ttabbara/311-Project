@@ -121,6 +121,7 @@ namespace UsedBookStore
 
             string price = this.PriceInput.Text;
             double priceNum = 0.0;
+
             //******************************************************
             //TODO: format price text for more appropriate formatting
             //******************************************************

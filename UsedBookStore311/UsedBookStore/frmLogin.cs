@@ -30,16 +30,17 @@ namespace UsedBookStore
                 MessageBox.Show("Please ensure all fields are filled.", "Registration failed");
                 return;
             }
+
             if (!txtRegPW.Text.Equals(txtConfirmPW.Text))
             {
                 MessageBox.Show("Passwords don't match.", "Registration failed");
                 return;
             }
-            if (DatabaseManager.registerUser(txtRegUser.Text, txtRegPW.Text, "TODO", txtPhone.Text, txtEmail.Text))
+
+            bool registerSuccess = this.controller.tryRegister(txtRegUser.Text, txtRegPW.Text, "TODO", txtPhone.Text, txtEmail.Text);
+
+            if (registerSuccess)
             {
-                originalForm.toggleLoginButton();
-                originalForm.toggleGreeting(txtUser.Text);
-                controller.setUser(new User(txtUser.Text, txtPass.Text, txtPhone.Text, txtEmail.Text));
                 this.Close();
                 MessageBox.Show("Successfully Registered!", "Registration Successful");
             }
@@ -47,15 +48,15 @@ namespace UsedBookStore
             {
                 MessageBox.Show("Failed to register user", "Registration failed");
             }
+
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (DatabaseManager.verifyLogin(txtUser.Text, txtPass.Text))
+            bool successfulLogin = this.controller.tryLogin(txtUser.Text, txtPass.Text);
+
+            if (successfulLogin)
             {
-                originalForm.toggleLoginButton();
-                originalForm.toggleGreeting(txtUser.Text);
-                controller.setUser(new User(txtUser.Text, txtPass.Text));
                 this.Close();
             }
             else

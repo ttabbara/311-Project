@@ -30,7 +30,7 @@ namespace UsedBookStore
         }
 
         //createBookQuery must be called directly before this query
-        public static string createListingQuery(Listing newListing, Int32 lastIndex)
+        public static string createListingQuery(Listing newListing, Int32 lastIndex, User currentUser)
         {
             string condition = "Good";
 
@@ -53,8 +53,9 @@ namespace UsedBookStore
                     break;
             }
 
-            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), '";
+            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), ";
 
+            query += currentUser.ID + ", '";
             query += newListing.AdHeader + "', ";
             query += lastIndex + ", ";
             query += newListing.Price + ", '";
