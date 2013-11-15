@@ -225,9 +225,10 @@ namespace UsedBookStore
 		}
 
 		public static DataTable getQueryDataSet(string query)
-		{
+        {
 
-			MySqlConnection conn = null;
+            MySqlConnection conn = null;
+
             try
             {
                 conn = DatabaseManager.getNewConnection();
@@ -248,9 +249,26 @@ namespace UsedBookStore
                 conn.Close();
             }
 
-			return null;
-		}
+            return null;
+        }
 
-	}
+        public static Image getDefaultNoImage()
+        {
+            string query = "SELECT * FROM Listing WHERE ListingID = 11";
+            using (MySqlConnection myConn = new MySqlConnection(connectionString))
+            {
+                myConn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, myConn))
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, myConn);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "TEST");
+                    DataTable dt = ds.Tables["TEST"];
+
+                    return byteArrayToImage(dt.Rows[0]["Image"] as Byte[]);
+                }
+            }
+        }
+    }
 }
 

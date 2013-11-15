@@ -39,13 +39,6 @@
             this.RecBookBtn = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.dgvSearchResults = new System.Windows.Forms.DataGridView();
-            this.adNumberCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adImage = new System.Windows.Forms.DataGridViewImageColumn();
-            this.adTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnOpenAd = new System.Windows.Forms.Button();
             this.panelAdPanel = new System.Windows.Forms.Panel();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -57,6 +50,13 @@
             this.imageAd = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblGreeting = new System.Windows.Forms.Label();
+            this.adNumberCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.adTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adAuthor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.panelAdPanel.SuspendLayout();
@@ -192,50 +192,6 @@
             this.dgvSearchResults.Size = new System.Drawing.Size(661, 386);
             this.dgvSearchResults.TabIndex = 15;
             // 
-            // adNumberCol
-            // 
-            this.adNumberCol.HeaderText = "#";
-            this.adNumberCol.Name = "adNumberCol";
-            this.adNumberCol.ReadOnly = true;
-            this.adNumberCol.Width = 25;
-            // 
-            // adImage
-            // 
-            this.adImage.HeaderText = "Image";
-            this.adImage.Name = "adImage";
-            this.adImage.ReadOnly = true;
-            // 
-            // adTitle
-            // 
-            this.adTitle.HeaderText = "Title";
-            this.adTitle.Name = "adTitle";
-            this.adTitle.ReadOnly = true;
-            // 
-            // adAuthor
-            // 
-            this.adAuthor.HeaderText = "Posted By";
-            this.adAuthor.Name = "adAuthor";
-            this.adAuthor.ReadOnly = true;
-            // 
-            // adDesc
-            // 
-            this.adDesc.HeaderText = "Description";
-            this.adDesc.Name = "adDesc";
-            this.adDesc.ReadOnly = true;
-            // 
-            // adPrice
-            // 
-            this.adPrice.HeaderText = "Price";
-            this.adPrice.Name = "adPrice";
-            this.adPrice.ReadOnly = true;
-            // 
-            // adCondition
-            // 
-            this.adCondition.HeaderText = "Condition";
-            this.adCondition.Name = "adCondition";
-            this.adCondition.ReadOnly = true;
-            this.adCondition.Width = 75;
-            // 
             // btnOpenAd
             // 
             this.btnOpenAd.Location = new System.Drawing.Point(693, 433);
@@ -350,6 +306,50 @@
             this.lblGreeting.Text = "Hi, Name!";
             this.lblGreeting.Visible = false;
             // 
+            // adNumberCol
+            // 
+            this.adNumberCol.HeaderText = "ID";
+            this.adNumberCol.Name = "adNumberCol";
+            this.adNumberCol.ReadOnly = true;
+            this.adNumberCol.Width = 25;
+            // 
+            // adImage
+            // 
+            this.adImage.HeaderText = "Image";
+            this.adImage.Name = "adImage";
+            this.adImage.ReadOnly = true;
+            // 
+            // adTitle
+            // 
+            this.adTitle.HeaderText = "Title";
+            this.adTitle.Name = "adTitle";
+            this.adTitle.ReadOnly = true;
+            // 
+            // adAuthor
+            // 
+            this.adAuthor.HeaderText = "Posted By";
+            this.adAuthor.Name = "adAuthor";
+            this.adAuthor.ReadOnly = true;
+            // 
+            // adDesc
+            // 
+            this.adDesc.HeaderText = "Description";
+            this.adDesc.Name = "adDesc";
+            this.adDesc.ReadOnly = true;
+            // 
+            // adPrice
+            // 
+            this.adPrice.HeaderText = "Price";
+            this.adPrice.Name = "adPrice";
+            this.adPrice.ReadOnly = true;
+            // 
+            // adCondition
+            // 
+            this.adCondition.HeaderText = "Condition";
+            this.adCondition.Name = "adCondition";
+            this.adCondition.ReadOnly = true;
+            this.adCondition.Width = 75;
+            // 
             // frmMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,13 +396,6 @@
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.DataGridView dgvSearchResults;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adNumberCol;
-        private System.Windows.Forms.DataGridViewImageColumn adImage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adAuthor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn adCondition;
         private System.Windows.Forms.Button btnOpenAd;
         private System.Windows.Forms.Panel panelAdPanel;
         private System.Windows.Forms.Label lblPrice;
@@ -414,6 +407,13 @@
         private System.Windows.Forms.Label lblCondition;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblGreeting;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adNumberCol;
+        private System.Windows.Forms.DataGridViewImageColumn adImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adAuthor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn adCondition;
      }
 }
 

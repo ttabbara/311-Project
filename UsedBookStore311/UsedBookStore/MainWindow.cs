@@ -13,6 +13,8 @@ namespace UsedBookStore
     public partial class frmMainWindow : Form
     {
         Controller controller;
+        private DataTable cachedResultTable;
+        private Image noImage = null;
 
         public frmMainWindow(Controller controller)
         {
@@ -100,7 +102,7 @@ namespace UsedBookStore
                     return;
                 }
                 statusBar.Text = "Searching...";
-                displaySearchResults(controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString()));
+                displaySearchResults(cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString()));
             }
         }
 
@@ -115,18 +117,45 @@ namespace UsedBookStore
             dgvSearchResults.BringToFront();
             foreach (DataRow row in dt.Rows)
             {
+                //No Image default record, skip it
+                if (row["ListingID"].ToString().Equals("11"))
+                {
+                    continue;
+                }
                 if (row["Image"].ToString() != "")
                 {
                     Image image = DatabaseManager.byteArrayToImage(row["Image"] as Byte[]);
                     Image thumb = image.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
-                    dgvSearchResults.Rows.Add(counter + "", thumb, row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
+                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "", thumb, row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
                 }
                 else
                 {
-                    dgvSearchResults.Rows.Add(counter + "", row["Image"], row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
+                    Image thumb = getNoImagePic().GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
+                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "",thumb, row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
                 }
                 counter++;
             }
+        }
+
+        private Image getCorrespondingImage(string id)
+        {
+            foreach (DataRow row in cachedResultTable.Rows)
+            {
+                if (row["ListingID"].ToString().Equals(id + ""))
+                {
+                    return DatabaseManager.byteArrayToImage(row["Image"] as Byte[]); ;
+                }
+            }
+            return null;
+        }
+
+        private Image getNoImagePic()
+        {
+            if (noImage != null)
+            {
+                return noImage;
+            }
+            return noImage = DatabaseManager.getDefaultNoImage();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -160,12 +189,20 @@ namespace UsedBookStore
             }
             foreach(DataGridViewRow row in dgvSearchResults.SelectedRows)
             {
-                if (row.Cells[1].Value.ToString() != "")
+                Image image;
+                Image thumb;
+
+                try
                 {
-                    Image image = (Image)row.Cells[1].Value;
-                    Image thumb = image.GetThumbnailImage(226, 219, () => false, IntPtr.Zero);
-                    imageAd.Image = thumb;
+                    image = getCorrespondingImage(row.Cells[0].Value.ToString());
+                    thumb = image.GetThumbnailImage(226, 219, () => false, IntPtr.Zero);
                 }
+                catch (Exception ee) //No image available, use noImageDefault
+                {
+                    thumb = getNoImagePic().GetThumbnailImage(226, 219, () => false, IntPtr.Zero);
+                }
+
+                imageAd.Image = thumb;
                 lblAdTitle.Text = row.Cells[2].Value.ToString();
                 lblPrice.Text = "Price: " +  row.Cells[5].Value.ToString();
                 lblCondition.Text = "Condition: " + row.Cells[6].Value.ToString();
