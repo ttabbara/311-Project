@@ -67,6 +67,7 @@
 			// 
 			// statusStrip
 			// 
+			this.statusStrip.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusbar});
 			this.statusStrip.Location = new System.Drawing.Point(0, 533);
