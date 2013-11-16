@@ -73,7 +73,7 @@ namespace UsedBookStore
         private void btnLogin_Click(object sender, EventArgs e)
         {
             bool successfulLogin = false;
-            if (Regex.IsMatch(txtRegUser.Text, @"^[a-zA-Z]+$"))
+            if (Regex.IsMatch(txtUser.Text, @"^[a-zA-Z]+$"))
             {
                 successfulLogin = this.controller.tryLogin(txtUser.Text, txtPass.Text);
             }

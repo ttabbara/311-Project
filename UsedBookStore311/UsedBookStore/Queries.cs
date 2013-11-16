@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace UsedBookStore
 {
@@ -53,14 +54,15 @@ namespace UsedBookStore
                     break;
             }
 
-            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), ";
+            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), '";
 
-            query += currentUser.ID + ", '";
+  //          query += currentUser.ID + ", '";
             query += newListing.AdHeader + "', ";
             query += lastIndex + ", ";
             query += newListing.Price + ", '";
             query += newListing.Description + "', '";
             query += condition + "', ";
+            
 
             //output the BLOB (byte array) into the listing
             if (newListing.Img == null)
@@ -73,7 +75,11 @@ namespace UsedBookStore
             }
 
             //deleted date is null by default
-            query += "DEFAULT(Deleted))";
+            query += "DEFAULT(Deleted), ";
+
+            query += "'" + currentUser.ID + "')";
+
+            //Debug.WriteLine(query);
 
             return query;
         }

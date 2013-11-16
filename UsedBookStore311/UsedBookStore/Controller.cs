@@ -22,7 +22,7 @@ namespace UsedBookStore
          public void userLogin(User user)
          {
              this.currentUser = user;
-
+             this.currentUser.ID = DatabaseManager.getUserID(this.currentUser.Username);
              this.mainWindow.toggleLoginButton();
              this.mainWindow.toggleGreeting(user.Username);
          }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace UsedBookStore
 {
@@ -268,6 +269,26 @@ namespace UsedBookStore
                     return byteArrayToImage(dt.Rows[0]["Image"] as Byte[]);
                 }
             }
+        }
+
+        public static int getUserID(string usrnme)
+        {
+            string query = "SELECT UserID FROM User WHERE UserName = '" + usrnme + "'";
+            int ident = 0;
+
+            MySqlConnection conn = DatabaseManager.getNewConnection();
+            if (conn != null)
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = query;
+
+                MySqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                ident = reader.GetInt32("UserID");
+                conn.Close();
+            }
+            Debug.WriteLine("IDent is " + ident);
+            return ident;
         }
     }
 }

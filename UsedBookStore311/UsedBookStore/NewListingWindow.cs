@@ -143,7 +143,7 @@ namespace UsedBookStore
             Listing.Condition conditionEnum = (Listing.Condition) this.ConditionInput.SelectedValue;
 
             //create listing using raw image data, whether null or not (check null in insert query)
-            Listing newListing = new Listing(title, listedBook, priceNum, description, conditionEnum, img);
+            Listing newListing = new Listing(title, listedBook, priceNum, description, conditionEnum, img, controller.getUser().ID);
             if (newListing == null)
             {
                 this.addError("Error 1002: The listing could not be created.");

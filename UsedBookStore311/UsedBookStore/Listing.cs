@@ -21,7 +21,7 @@ namespace UsedBookStore
         private Condition condition;
         private Image img;
 
-        public Listing(string title, Book listedBook, double price, string adDescription, Condition bookCondition, Image img)
+        public Listing(string title, Book listedBook, double price, string adDescription, Condition bookCondition, Image img, int usrID)
         {
             adHeader = title;
             book = listedBook;
@@ -30,6 +30,7 @@ namespace UsedBookStore
             timePosted = DateTime.Now;
             condition = bookCondition;
             this.img = img;
+            userID = usrID;
         }
 
 
@@ -79,5 +80,6 @@ namespace UsedBookStore
             set { this.img = value; }
         }
 
+        
     }
 }
