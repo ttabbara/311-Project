@@ -29,8 +29,8 @@ namespace UsedBookStore
 
             controller.setMainWindow(this);
 
-		    statusbar.Text = "Sign up or Login for Full Access!";
-		    statusStrip.Update();
+		  statusbar.Text = "Sign up or Login for Full Access!";
+		  statusStrip.Update();
 
             btnSettings.Visible = false;
             NewListingBtn.Visible = false;
