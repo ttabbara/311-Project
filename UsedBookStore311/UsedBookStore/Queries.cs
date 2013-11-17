@@ -13,9 +13,11 @@ namespace UsedBookStore
         public static readonly string GET_ALL_SUBJECT = "SELECT SubjectCode, SubjectName FROM Subject where FacultyCode = @FC ORDER BY SubjectName";
         public static readonly string GET_LAST_BOOK_ID = "SELECT LAST_INSERT_ID() as lastIndex FROM Book";
         public static readonly string REGISTER_USER = "INSERT INTO User (UserName, PassWord, Salt, PhoneNumber, Email, MemberSince) VALUES (@user,@pass, @salt,@phone,@email, CURRENT_TIMESTAMP)";
-        public static readonly string GET_MY_LISTINGS = "SELECT ListingID, Header, BookID, Price, Listing.Desc, Listing.Condition, Image, PosterID FROM Listing WHERE PosterID = @user";
+        public static readonly string GET_MY_LISTINGS = "SELECT ListingID, Header, BookID, Price, Listing.Desc, Listing.Condition, Image, PosterID FROM Listing WHERE PosterID = @user AND Listing.Deleted IS NULL";
         public static readonly string GET_USER_INFO = "SELECT UserID, UserName, PhoneNumber, Email FROM User WHERE UserName = @userName";
         public static readonly string GET_USER_INFO_FROM_ID = "SELECT UserID, UserName, PhoneNumber, Email FROM User WHERE UserID = @ID";
+        public static readonly string DELETE_LISTING_BY_ID = "UPDATE Listing SET Deleted = NOW() WHERE ListingID = @LID";
+
 
         //TODO: add faculty and subject and course to book
         public static string createBookQuery(Book newBook)
@@ -92,16 +94,16 @@ namespace UsedBookStore
              switch (searchCriteria)
              {
                   case "Author":
-                       query = "SELECT * FROM Listing L Where L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Author COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
+                       query = "SELECT * FROM Listing L Where L.Deleted IS NULL AND L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Author COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
                        break;
                   case "Course Code":
                         //TODO
                        break;
                   case "ISBN":
-                       query = "SELECT * FROM Listing L WHERE L.BookID IN (SELECT B.BookID FROM Book B WHERE B.ISBN = " + "'" + searchText+ "')";
+                       query = "SELECT * FROM Listing L WHERE L.Deleted IS NULL AND L.BookID IN (SELECT B.BookID FROM Book B WHERE B.ISBN = " + "'" + searchText + "')";
                        break;
                   case "Title":
-                       query = "SELECT * FROM Listing L WHERE L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Title COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
+                       query = "SELECT * FROM Listing L WHERE L.Deleted IS NULL AND L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Title COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
                        break;
                   default:
                        break;

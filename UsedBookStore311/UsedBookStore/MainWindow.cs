@@ -251,6 +251,8 @@ namespace UsedBookStore
             }
 
             panelAdPanel.BringToFront();
+
+            this.DeleteListingBtn.Visible = false;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -259,6 +261,8 @@ namespace UsedBookStore
 
             statusbar.Text = "You can try posting an ad of your own for free!";
             statusStrip.Update();
+
+            this.DeleteListingBtn.Visible = true;
         }
 
         public void toggleGreeting(string userName)
@@ -327,6 +331,37 @@ namespace UsedBookStore
 
             Smtp.Dispose();
             message.Dispose();
+        }
+
+        private void DeleteListingBtn_Click(object sender, EventArgs e)
+        {
+
+            if (dgvSearchResults.SelectedRows.Count < 1)
+            {
+                MessageBox.Show("Please select an Ad to open first.");
+                return;
+            }
+
+            if (!this.controller.isUserLoggedIn())
+            {
+                MessageBox.Show("Please log in to delete your ad.");
+                return;
+            }
+
+            foreach (DataGridViewRow row in dgvSearchResults.SelectedRows)
+            {
+                int currentUserID = DatabaseManager.getUserID(row.Cells[3].Value.ToString());
+
+                if (currentUserID == this.controller.getUser().ID)
+                {
+                    int listingID = Convert.ToInt32(row.Cells[0].Value);
+
+                    DatabaseManager.deleteListing(listingID);
+                }
+
+                dgvSearchResults.Rows.RemoveAt(row.Index);
+            }
+
         }
 
 

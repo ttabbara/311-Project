@@ -351,6 +351,22 @@ namespace UsedBookStore
             Debug.WriteLine("IDent is " + ident);
             return ident;
         }
+
+        public static void deleteListing(int listingID)
+        {
+            MySqlConnection conn = DatabaseManager.getNewConnection();
+            if (conn != null)
+            {
+                MySqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = Queries.DELETE_LISTING_BY_ID;
+
+                cmd.Parameters.AddWithValue("@LID", listingID);
+
+                cmd.ExecuteNonQuery();
+
+                conn.Close();
+            }
+        }
     }
 }
 
