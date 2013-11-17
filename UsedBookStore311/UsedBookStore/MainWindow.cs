@@ -15,6 +15,9 @@ namespace UsedBookStore
     public partial class frmMainWindow : Form
     {
         Controller controller;
+
+        private User currentAdUserInfo;
+
         private DataTable cachedResultTable;
         private Image noImage = null;
 
@@ -25,15 +28,10 @@ namespace UsedBookStore
             searchComboBox.SelectedIndex = 3;
 
             controller.setMainWindow(this);
-<<<<<<< HEAD
-            statusbar.Text = "Sign up or Login for Full Access!";
-            statusStrip.Update();
-=======
-            
+
 		    statusbar.Text = "Sign up or Login for Full Access!";
 		    statusStrip.Update();
 
->>>>>>> Email
             btnSettings.Visible = false;
             NewListingBtn.Visible = false;
             MyListingBtn.Visible = false;
@@ -81,14 +79,9 @@ namespace UsedBookStore
                 NewListingBtn.Visible = true;
                 MyListingBtn.Visible = true;
                 RecBookBtn.Visible = true;
-<<<<<<< HEAD
-                statusbar.Text = "Best of luck with your classes!";
-                statusStrip.Update();
-=======
 
 			    statusbar.Text = "Best of luck with your classes!";
 			    statusStrip.Update();
->>>>>>> Email
             }
             else
             {
@@ -121,21 +114,10 @@ namespace UsedBookStore
                     MessageBox.Show("Please enter search text before searching");
                     return;
                 }
-<<<<<<< HEAD
+
                 statusbar.Text = "Searching...";
                 statusStrip.Update();
                 displaySearchResults(cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString()));
-
-=======
-
-			    statusbar.Text = "Searching...";
-			    statusStrip.Update();
-
-                MessageBox.Show(searchBox.Text);
-                cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString());
-
-                displaySearchResults(cachedResultTable);
->>>>>>> Email
             }
         }
 
@@ -144,13 +126,9 @@ namespace UsedBookStore
             if (dt.Rows.Count < 1)
             {
                 MessageBox.Show("Your search did not match any Ads.", "No results");
-<<<<<<< HEAD
+
                 statusbar.Text = "Try to refine your search please.";
                 statusStrip.Update();
-=======
-			    statusbar.Text = "Try to refine your search please.";
-			    statusStrip.Update();
->>>>>>> Email
             }
 
             dgvSearchResults.Rows.Clear();
@@ -164,12 +142,10 @@ namespace UsedBookStore
                 {
                     continue;
                 }
-<<<<<<< HEAD
+
                 int userID = Convert.ToInt32(row["PosterID"].ToString());
                 User currentUserInfo = DatabaseManager.getUserInfo(userID);
-=======
 
->>>>>>> Email
                 if (row["Image"].ToString() != "")
                 {
                     Image image = DatabaseManager.byteArrayToImage(row["Image"] as Byte[]);
@@ -184,14 +160,9 @@ namespace UsedBookStore
 
                 counter++;
             }
-<<<<<<< HEAD
+
             statusbar.Text = "Click open ad to view contact information!";
             statusStrip.Update();
-=======
-
-		    statusbar.Text = "Click open ad to view contact information!";
-		    statusStrip.Update();
->>>>>>> Email
         }
 
         private Image getCorrespondingImage(string id)
@@ -261,13 +232,22 @@ namespace UsedBookStore
 
                 imageAd.Image = thumb;
                 string username = row.Cells[3].Value.ToString();
-                User currentUserInfo = DatabaseManager.getUserInfo(username);
-                lblAdTitle.Text = row.Cells[2].Value.ToString();
-                lblEmail.Text = "Contact Email: " + currentUserInfo.UserEmail;
-                lblPhone.Text = "Phone: " + currentUserInfo.UserPhoneNumber;
-                lblPrice.Text = "Price: " + row.Cells[5].Value.ToString();
-                lblCondition.Text = "Condition: " + row.Cells[6].Value.ToString();
-                txtAdDescription.Text = row.Cells[4].Value.ToString();
+
+                currentAdUserInfo = DatabaseManager.getUserInfo(username);
+
+                if (currentAdUserInfo != null)
+                {
+                    lblAdTitle.Text = row.Cells[2].Value.ToString();
+                    lblEmail.Text = "Contact Email: " + currentAdUserInfo.UserEmail;
+                    lblPhone.Text = "Phone: " + currentAdUserInfo.UserPhoneNumber;
+                    lblPrice.Text = "Price: " + row.Cells[5].Value.ToString();
+                    lblCondition.Text = "Condition: " + row.Cells[6].Value.ToString();
+                    txtAdDescription.Text = row.Cells[4].Value.ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Sorry, could not find this user.");
+                }
             }
 
             panelAdPanel.BringToFront();
@@ -276,13 +256,9 @@ namespace UsedBookStore
         private void btnBack_Click(object sender, EventArgs e)
         {
             dgvSearchResults.BringToFront();
-<<<<<<< HEAD
+
             statusbar.Text = "You can try posting an ad of your own for free!";
             statusStrip.Update();
-=======
-		    statusbar.Text = "You can try posting an ad of your own for free!";
-		    statusStrip.Update();
->>>>>>> Email
         }
 
         public void toggleGreeting(string userName)
@@ -300,6 +276,13 @@ namespace UsedBookStore
 
         private void SendEmailBtn_Click(object sender, EventArgs e)
         {
+            //if there is no ad user
+            if (currentAdUserInfo == null)
+            {
+                MessageBox.Show("There was an error getting the poster's email, please re-open this ad.");
+                return;
+            }
+
             MailMessage message = new MailMessage();
 
             message.Subject = "Your ad was responded to!";
@@ -310,7 +293,7 @@ namespace UsedBookStore
 
             message.From = new MailAddress("311bookstore@gmail.com");
 
-            message.To.Add(new MailAddress("kowaitori@gmail.com"));
+            message.To.Add(new MailAddress(currentAdUserInfo.UserEmail));
 
             System.Net.Mail.SmtpClient Smtp = new SmtpClient();
 
