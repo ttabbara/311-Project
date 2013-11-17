@@ -245,6 +245,13 @@ namespace UsedBookStore
             }
         }
 
+        private void SendEmailBtn_Click(object sender, EventArgs e)
+        {
+            string body = EmailBodyInput.Text;
+
+
+        }
+
 
     }
 }
