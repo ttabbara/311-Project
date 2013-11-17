@@ -118,9 +118,8 @@
             this.searchBox.Font = new System.Drawing.Font("Lucida Sans Unicode", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.searchBox.Location = new System.Drawing.Point(9, 16);
-            this.searchBox.Multiline = true;
             this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(184, 23);
+            this.searchBox.Size = new System.Drawing.Size(184, 19);
             this.searchBox.TabIndex = 3;
             this.searchBox.Text = "[Search Here]";
             this.searchBox.Click += new System.EventHandler(this.searchBox_Click);
