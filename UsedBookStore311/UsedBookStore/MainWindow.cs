@@ -23,8 +23,8 @@ namespace UsedBookStore
             searchComboBox.SelectedIndex = 3;
 
             controller.setMainWindow(this);
-		  statusbar.Text = "Sign up or Login for Full Access!";
-		  statusStrip.Update();
+            statusbar.Text = "Sign up or Login for Full Access!";
+            statusStrip.Update();
             btnSettings.Visible = false;
             NewListingBtn.Visible = false;
             MyListingBtn.Visible = false;
@@ -72,8 +72,8 @@ namespace UsedBookStore
                 NewListingBtn.Visible = true;
                 MyListingBtn.Visible = true;
                 RecBookBtn.Visible = true;
-			 statusbar.Text = "Best of luck with your classes!";
-			 statusStrip.Update();
+                statusbar.Text = "Best of luck with your classes!";
+                statusStrip.Update();
             }
             else
             {
@@ -88,8 +88,8 @@ namespace UsedBookStore
 
         private void searchBox_Click(object sender, EventArgs e)
         {
-		   statusbar.Text = "Keep your searches simple. Searches are not Case-sensitive.";
-		   statusStrip.Update();
+            statusbar.Text = "Keep your searches simple. Searches are not Case-sensitive.";
+            statusStrip.Update();
             if (searchBox.Text.Equals("[Search Here]"))
             {
                 searchBox.Text = string.Empty;
@@ -106,10 +106,10 @@ namespace UsedBookStore
                     MessageBox.Show("Please enter search text before searching");
                     return;
                 }
-			 statusbar.Text = "Searching...";
-			 statusStrip.Update();
+                statusbar.Text = "Searching...";
+                statusStrip.Update();
                 displaySearchResults(cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString()));
-			
+
             }
         }
 
@@ -118,8 +118,8 @@ namespace UsedBookStore
             if (dt.Rows.Count < 1)
             {
                 MessageBox.Show("Your search did not match any Ads.", "No results");
-			 statusbar.Text = "Try to refine your search please.";
-			 statusStrip.Update();
+                statusbar.Text = "Try to refine your search please.";
+                statusStrip.Update();
             }
             dgvSearchResults.Rows.Clear();
             int counter = 1;
@@ -131,21 +131,23 @@ namespace UsedBookStore
                 {
                     continue;
                 }
+                int userID = Convert.ToInt32(row["PosterID"].ToString());
+                User currentUserInfo = DatabaseManager.getUserInfo(userID);
                 if (row["Image"].ToString() != "")
                 {
                     Image image = DatabaseManager.byteArrayToImage(row["Image"] as Byte[]);
                     Image thumb = image.GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
-                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "", thumb, row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
+                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "", thumb, row["Header"].ToString(), currentUserInfo.Username, row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
                 }
                 else
                 {
                     Image thumb = getNoImagePic().GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
-                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "",thumb, row["Header"].ToString(), "Me", row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
+                    dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "", thumb, row["Header"].ToString(), currentUserInfo.Username, row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
                 }
                 counter++;
             }
-		  statusbar.Text = "Click open ad to view contact information!";
-		  statusStrip.Update();
+            statusbar.Text = "Click open ad to view contact information!";
+            statusStrip.Update();
         }
 
         private Image getCorrespondingImage(string id)
@@ -177,7 +179,7 @@ namespace UsedBookStore
         //My Listings Button
         private void button3_Click(object sender, EventArgs e)
         {
-
+            displaySearchResults(cachedResultTable = controller.getMyListings(controller.getUser().ID));
         }
 
         private void searchBox_TextChanged(object sender, EventArgs e)
@@ -198,7 +200,7 @@ namespace UsedBookStore
                 MessageBox.Show("Please select an Ad to open first.");
                 return;
             }
-            foreach(DataGridViewRow row in dgvSearchResults.SelectedRows)
+            foreach (DataGridViewRow row in dgvSearchResults.SelectedRows)
             {
                 Image image;
                 Image thumb;
@@ -214,22 +216,24 @@ namespace UsedBookStore
                 }
 
                 imageAd.Image = thumb;
+                string username = row.Cells[3].Value.ToString();
+                User currentUserInfo = DatabaseManager.getUserInfo(username);
                 lblAdTitle.Text = row.Cells[2].Value.ToString();
-                lblPrice.Text = "Price: " +  row.Cells[5].Value.ToString();
+                lblEmail.Text = "Contact Email: " + currentUserInfo.UserEmail;
+                lblPhone.Text = "Phone: " + currentUserInfo.UserPhoneNumber;
+                lblPrice.Text = "Price: " + row.Cells[5].Value.ToString();
                 lblCondition.Text = "Condition: " + row.Cells[6].Value.ToString();
-                //lblEmail.Text = row.Cells[2].Value.ToString();
-                //lblPhone.Text = 
                 txtAdDescription.Text = row.Cells[4].Value.ToString();
             }
-                
+
             panelAdPanel.BringToFront();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             dgvSearchResults.BringToFront();
-		  statusbar.Text = "You can try posting an ad of your own for free!";
-		  statusStrip.Update();
+            statusbar.Text = "You can try posting an ad of your own for free!";
+            statusStrip.Update();
         }
 
         public void toggleGreeting(string userName)

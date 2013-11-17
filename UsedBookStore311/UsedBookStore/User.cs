@@ -27,6 +27,14 @@ namespace UsedBookStore
             userListings = new List<Listing>();
         }
 
+        public User(int userID, string userName, string phonenumber, string email)
+        {
+            this.userID = userID;
+            this.username = userName;
+            this.userPhoneNumber = phonenumber;
+            this.userEmail = email;
+        }
+
         public User(string userName)
         {            
             username = userName;

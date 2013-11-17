@@ -103,5 +103,10 @@ namespace UsedBookStore
         {
 
         }
+
+        private void txtConfirmPW_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
