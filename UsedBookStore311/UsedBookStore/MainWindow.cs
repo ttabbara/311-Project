@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Net.Mail;
+
 namespace UsedBookStore
 {
     public partial class frmMainWindow : Form
@@ -23,8 +25,15 @@ namespace UsedBookStore
             searchComboBox.SelectedIndex = 3;
 
             controller.setMainWindow(this);
+<<<<<<< HEAD
             statusbar.Text = "Sign up or Login for Full Access!";
             statusStrip.Update();
+=======
+            
+		    statusbar.Text = "Sign up or Login for Full Access!";
+		    statusStrip.Update();
+
+>>>>>>> Email
             btnSettings.Visible = false;
             NewListingBtn.Visible = false;
             MyListingBtn.Visible = false;
@@ -72,8 +81,14 @@ namespace UsedBookStore
                 NewListingBtn.Visible = true;
                 MyListingBtn.Visible = true;
                 RecBookBtn.Visible = true;
+<<<<<<< HEAD
                 statusbar.Text = "Best of luck with your classes!";
                 statusStrip.Update();
+=======
+
+			    statusbar.Text = "Best of luck with your classes!";
+			    statusStrip.Update();
+>>>>>>> Email
             }
             else
             {
@@ -106,10 +121,21 @@ namespace UsedBookStore
                     MessageBox.Show("Please enter search text before searching");
                     return;
                 }
+<<<<<<< HEAD
                 statusbar.Text = "Searching...";
                 statusStrip.Update();
                 displaySearchResults(cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString()));
 
+=======
+
+			    statusbar.Text = "Searching...";
+			    statusStrip.Update();
+
+                MessageBox.Show(searchBox.Text);
+                cachedResultTable = controller.searchListings(searchBox.Text, searchComboBox.SelectedItem.ToString());
+
+                displaySearchResults(cachedResultTable);
+>>>>>>> Email
             }
         }
 
@@ -118,12 +144,19 @@ namespace UsedBookStore
             if (dt.Rows.Count < 1)
             {
                 MessageBox.Show("Your search did not match any Ads.", "No results");
+<<<<<<< HEAD
                 statusbar.Text = "Try to refine your search please.";
                 statusStrip.Update();
+=======
+			    statusbar.Text = "Try to refine your search please.";
+			    statusStrip.Update();
+>>>>>>> Email
             }
+
             dgvSearchResults.Rows.Clear();
             int counter = 1;
             dgvSearchResults.BringToFront();
+
             foreach (DataRow row in dt.Rows)
             {
                 //No Image default record, skip it
@@ -131,8 +164,12 @@ namespace UsedBookStore
                 {
                     continue;
                 }
+<<<<<<< HEAD
                 int userID = Convert.ToInt32(row["PosterID"].ToString());
                 User currentUserInfo = DatabaseManager.getUserInfo(userID);
+=======
+
+>>>>>>> Email
                 if (row["Image"].ToString() != "")
                 {
                     Image image = DatabaseManager.byteArrayToImage(row["Image"] as Byte[]);
@@ -144,10 +181,17 @@ namespace UsedBookStore
                     Image thumb = getNoImagePic().GetThumbnailImage(120, 120, () => false, IntPtr.Zero);
                     dgvSearchResults.Rows.Add(row["ListingID"].ToString() + "", thumb, row["Header"].ToString(), currentUserInfo.Username, row["Desc"].ToString(), "$" + row["Price"].ToString(), row["Condition"].ToString());
                 }
+
                 counter++;
             }
+<<<<<<< HEAD
             statusbar.Text = "Click open ad to view contact information!";
             statusStrip.Update();
+=======
+
+		    statusbar.Text = "Click open ad to view contact information!";
+		    statusStrip.Update();
+>>>>>>> Email
         }
 
         private Image getCorrespondingImage(string id)
@@ -232,8 +276,13 @@ namespace UsedBookStore
         private void btnBack_Click(object sender, EventArgs e)
         {
             dgvSearchResults.BringToFront();
+<<<<<<< HEAD
             statusbar.Text = "You can try posting an ad of your own for free!";
             statusStrip.Update();
+=======
+		    statusbar.Text = "You can try posting an ad of your own for free!";
+		    statusStrip.Update();
+>>>>>>> Email
         }
 
         public void toggleGreeting(string userName)
@@ -247,6 +296,54 @@ namespace UsedBookStore
                 lblGreeting.Visible = true;
                 lblGreeting.Text = "Hi, " + userName + "!";
             }
+        }
+
+        private void SendEmailBtn_Click(object sender, EventArgs e)
+        {
+            MailMessage message = new MailMessage();
+
+            message.Subject = "Your ad was responded to!";
+
+            message.Body = EmailBodyInput.Text;
+
+            message.BodyEncoding = Encoding.GetEncoding("Windows-1254"); // Turkish Character Encoding
+
+            message.From = new MailAddress("311bookstore@gmail.com");
+
+            message.To.Add(new MailAddress("kowaitori@gmail.com"));
+
+            System.Net.Mail.SmtpClient Smtp = new SmtpClient();
+
+            Smtp.Host = "smtp.gmail.com";
+
+            Smtp.Port = 25;
+
+            Smtp.EnableSsl = true;
+
+            Smtp.Credentials = new System.Net.NetworkCredential("311bookstore@gmail.com", "311project");
+
+            try
+            {
+                statusbar.Text = "Sending email... Please wait...";
+                statusStrip.Update();
+
+                Smtp.Send(message);
+                MessageBox.Show("Your message has been sent!");
+                EmailBodyInput.Text = string.Empty;
+
+                statusbar.Text = "Email Successful!";
+                statusStrip.Update();
+            }
+            catch (Exception mailException)
+            {
+                MessageBox.Show("Sending mail has failed at this time. Sorry.");
+
+                statusbar.Text = "Email failed.";
+                statusStrip.Update();
+            }
+
+            Smtp.Dispose();
+            message.Dispose();
         }
 
 
