@@ -67,7 +67,8 @@
 			// 
 			// statusStrip
 			// 
-			this.statusStrip.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.statusStrip.BackColor = System.Drawing.Color.CornflowerBlue;
+			this.statusStrip.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusbar});
 			this.statusStrip.Location = new System.Drawing.Point(0, 533);
@@ -85,18 +86,21 @@
 			// 
 			// btnLogin
 			// 
+			this.btnLogin.BackColor = System.Drawing.Color.Gold;
+			this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.btnLogin.FlatAppearance.BorderSize = 0;
 			this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnLogin.Location = new System.Drawing.Point(863, 14);
 			this.btnLogin.Name = "btnLogin";
 			this.btnLogin.Size = new System.Drawing.Size(87, 27);
-			this.btnLogin.TabIndex = 1;
+			this.btnLogin.TabIndex = 14;
 			this.btnLogin.Text = "Login";
-			this.btnLogin.UseVisualStyleBackColor = true;
+			this.btnLogin.UseVisualStyleBackColor = false;
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
 			// 
 			// btnSettings
 			// 
+			this.btnSettings.BackColor = System.Drawing.Color.CornflowerBlue;
 			this.btnSettings.FlatAppearance.BorderSize = 0;
 			this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.btnSettings.Location = new System.Drawing.Point(762, 14);
@@ -104,7 +108,7 @@
 			this.btnSettings.Size = new System.Drawing.Size(87, 27);
 			this.btnSettings.TabIndex = 2;
 			this.btnSettings.Text = "Settings";
-			this.btnSettings.UseVisualStyleBackColor = true;
+			this.btnSettings.UseVisualStyleBackColor = false;
 			this.btnSettings.Visible = false;
 			// 
 			// searchBox
@@ -181,7 +185,7 @@
 			this.button6.Location = new System.Drawing.Point(9, 47);
 			this.button6.Name = "button6";
 			this.button6.Size = new System.Drawing.Size(162, 43);
-			this.button6.TabIndex = 14;
+			this.button6.TabIndex = 1;
 			this.button6.Text = "Home";
 			this.button6.UseVisualStyleBackColor = false;
 			this.button6.Click += new System.EventHandler(this.button6_Click);
@@ -190,7 +194,9 @@
 			// 
 			this.dgvSearchResults.AllowUserToAddRows = false;
 			this.dgvSearchResults.AllowUserToDeleteRows = false;
+			this.dgvSearchResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dgvSearchResults.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.dgvSearchResults.BackgroundColor = System.Drawing.Color.Silver;
 			this.dgvSearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvSearchResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.adNumberCol,
@@ -200,10 +206,12 @@
             this.adDesc,
             this.adPrice,
             this.adCondition});
+			this.dgvSearchResults.GridColor = System.Drawing.Color.Silver;
 			this.dgvSearchResults.Location = new System.Drawing.Point(180, 47);
 			this.dgvSearchResults.MultiSelect = false;
 			this.dgvSearchResults.Name = "dgvSearchResults";
 			this.dgvSearchResults.ReadOnly = true;
+			this.dgvSearchResults.RowHeadersWidth = 4;
 			this.dgvSearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvSearchResults.Size = new System.Drawing.Size(771, 445);
 			this.dgvSearchResults.TabIndex = 15;
@@ -213,7 +221,6 @@
 			this.adNumberCol.HeaderText = "ID";
 			this.adNumberCol.Name = "adNumberCol";
 			this.adNumberCol.ReadOnly = true;
-			this.adNumberCol.Width = 25;
 			// 
 			// adImage
 			// 
@@ -250,17 +257,17 @@
 			this.adCondition.HeaderText = "Condition";
 			this.adCondition.Name = "adCondition";
 			this.adCondition.ReadOnly = true;
-			this.adCondition.Width = 75;
 			// 
 			// btnOpenAd
 			// 
+			this.btnOpenAd.BackColor = System.Drawing.Color.Gold;
 			this.btnOpenAd.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btnOpenAd.Location = new System.Drawing.Point(808, 500);
+			this.btnOpenAd.Location = new System.Drawing.Point(863, 498);
 			this.btnOpenAd.Name = "btnOpenAd";
-			this.btnOpenAd.Size = new System.Drawing.Size(139, 27);
+			this.btnOpenAd.Size = new System.Drawing.Size(87, 27);
 			this.btnOpenAd.TabIndex = 16;
 			this.btnOpenAd.Text = "Open Ad";
-			this.btnOpenAd.UseVisualStyleBackColor = true;
+			this.btnOpenAd.UseVisualStyleBackColor = false;
 			this.btnOpenAd.Click += new System.EventHandler(this.btnOpenAd_Click);
 			// 
 			// panelAdPanel
@@ -348,22 +355,23 @@
 			// 
 			// btnBack
 			// 
+			this.btnBack.BackColor = System.Drawing.Color.CornflowerBlue;
 			this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-			this.btnBack.Location = new System.Drawing.Point(666, 500);
+			this.btnBack.Location = new System.Drawing.Point(762, 498);
 			this.btnBack.Name = "btnBack";
-			this.btnBack.Size = new System.Drawing.Size(139, 27);
+			this.btnBack.Size = new System.Drawing.Size(87, 27);
 			this.btnBack.TabIndex = 18;
-			this.btnBack.Text = "Back to list";
-			this.btnBack.UseVisualStyleBackColor = true;
+			this.btnBack.Text = "Back to List";
+			this.btnBack.UseVisualStyleBackColor = false;
 			this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
 			// 
 			// lblGreeting
 			// 
 			this.lblGreeting.AutoSize = true;
-			this.lblGreeting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblGreeting.Font = new System.Drawing.Font("Lucida Sans Unicode", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblGreeting.Location = new System.Drawing.Point(553, 10);
 			this.lblGreeting.Name = "lblGreeting";
-			this.lblGreeting.Size = new System.Drawing.Size(78, 20);
+			this.lblGreeting.Size = new System.Drawing.Size(87, 20);
 			this.lblGreeting.TabIndex = 19;
 			this.lblGreeting.Text = "Hi, Name!";
 			this.lblGreeting.Visible = false;
@@ -381,6 +389,7 @@
 			// frmMainWindow
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.ClientSize = new System.Drawing.Size(976, 555);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.lblGreeting);

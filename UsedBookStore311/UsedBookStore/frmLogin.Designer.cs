@@ -98,18 +98,20 @@
 			// 
 			// btnRegister
 			// 
+			this.btnRegister.BackColor = System.Drawing.Color.Gold;
 			this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnRegister.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnRegister.Location = new System.Drawing.Point(182, 473);
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Size = new System.Drawing.Size(187, 41);
 			this.btnRegister.TabIndex = 5;
-			this.btnRegister.Text = "Sign up!";
-			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Text = "Sign up";
+			this.btnRegister.UseVisualStyleBackColor = false;
 			this.btnRegister.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// btnLogin
 			// 
+			this.btnLogin.BackColor = System.Drawing.Color.CornflowerBlue;
 			this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.btnLogin.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnLogin.Location = new System.Drawing.Point(107, 139);
@@ -117,7 +119,7 @@
 			this.btnLogin.Size = new System.Drawing.Size(328, 41);
 			this.btnLogin.TabIndex = 6;
 			this.btnLogin.Text = "Login";
-			this.btnLogin.UseVisualStyleBackColor = true;
+			this.btnLogin.UseVisualStyleBackColor = false;
 			this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
 			// 
 			// lblRegUser
@@ -212,6 +214,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 			this.ClientSize = new System.Drawing.Size(559, 528);
 			this.Controls.Add(this.txtRegUser);
 			this.Controls.Add(this.txtRegPW);
