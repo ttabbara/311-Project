@@ -218,7 +218,11 @@ namespace UsedBookStore
 
 				//add the listing
 				cmd.CommandText = Queries.createListingQuery(newListing, lastIndex, currentUser);
-				cmd.Parameters.AddWithValue("@ImageByteArray", imageToByteArray(newListing.Img));
+
+                //only if there is an image
+                if (newListing.Img != null)
+				    cmd.Parameters.AddWithValue("@ImageByteArray", imageToByteArray(newListing.Img));
+
 				cmd.ExecuteNonQuery();
 
 				conn.Close();
@@ -233,7 +237,9 @@ namespace UsedBookStore
             try
             {
                 conn = DatabaseManager.getNewConnection();
+
                 //query DB and return results inside DataTable
+
                 MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 adapter.Fill(ds, "SEARCHED_LISTINGS");

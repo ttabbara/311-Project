@@ -48,6 +48,9 @@
             this.adCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnOpenAd = new System.Windows.Forms.Button();
             this.panelAdPanel = new System.Windows.Forms.Panel();
+            this.SendEmailBtn = new System.Windows.Forms.Button();
+            this.EmailSellerLbl = new System.Windows.Forms.Label();
+            this.EmailBodyInput = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblCondition = new System.Windows.Forms.Label();
@@ -58,9 +61,6 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblGreeting = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.EmailBodyInput = new System.Windows.Forms.TextBox();
-            this.EmailSellerLbl = new System.Windows.Forms.Label();
-            this.SendEmailBtn = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.panelAdPanel.SuspendLayout();
@@ -283,6 +283,36 @@
             this.panelAdPanel.Size = new System.Drawing.Size(771, 447);
             this.panelAdPanel.TabIndex = 17;
             // 
+            // SendEmailBtn
+            // 
+            this.SendEmailBtn.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SendEmailBtn.Location = new System.Drawing.Point(597, 224);
+            this.SendEmailBtn.Name = "SendEmailBtn";
+            this.SendEmailBtn.Size = new System.Drawing.Size(81, 43);
+            this.SendEmailBtn.TabIndex = 9;
+            this.SendEmailBtn.Text = "Send Email";
+            this.SendEmailBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.SendEmailBtn.UseVisualStyleBackColor = true;
+            this.SendEmailBtn.Click += new System.EventHandler(this.SendEmailBtn_Click);
+            // 
+            // EmailSellerLbl
+            // 
+            this.EmailSellerLbl.AutoSize = true;
+            this.EmailSellerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailSellerLbl.Location = new System.Drawing.Point(516, 84);
+            this.EmailSellerLbl.Name = "EmailSellerLbl";
+            this.EmailSellerLbl.Size = new System.Drawing.Size(110, 24);
+            this.EmailSellerLbl.TabIndex = 8;
+            this.EmailSellerLbl.Text = "Email Seller";
+            // 
+            // EmailBodyInput
+            // 
+            this.EmailBodyInput.Location = new System.Drawing.Point(520, 123);
+            this.EmailBodyInput.Multiline = true;
+            this.EmailBodyInput.Name = "EmailBodyInput";
+            this.EmailBodyInput.Size = new System.Drawing.Size(229, 95);
+            this.EmailBodyInput.TabIndex = 7;
+            // 
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
@@ -384,36 +414,6 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
-            // EmailBodyInput
-            // 
-            this.EmailBodyInput.Location = new System.Drawing.Point(520, 123);
-            this.EmailBodyInput.Multiline = true;
-            this.EmailBodyInput.Name = "EmailBodyInput";
-            this.EmailBodyInput.Size = new System.Drawing.Size(229, 95);
-            this.EmailBodyInput.TabIndex = 7;
-            // 
-            // EmailSellerLbl
-            // 
-            this.EmailSellerLbl.AutoSize = true;
-            this.EmailSellerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmailSellerLbl.Location = new System.Drawing.Point(516, 84);
-            this.EmailSellerLbl.Name = "EmailSellerLbl";
-            this.EmailSellerLbl.Size = new System.Drawing.Size(110, 24);
-            this.EmailSellerLbl.TabIndex = 8;
-            this.EmailSellerLbl.Text = "Email Seller";
-            // 
-            // SendEmailBtn
-            // 
-            this.SendEmailBtn.Font = new System.Drawing.Font("Lucida Sans Unicode", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SendEmailBtn.Location = new System.Drawing.Point(597, 224);
-            this.SendEmailBtn.Name = "SendEmailBtn";
-            this.SendEmailBtn.Size = new System.Drawing.Size(81, 43);
-            this.SendEmailBtn.TabIndex = 9;
-            this.SendEmailBtn.Text = "Send Email";
-            this.SendEmailBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.SendEmailBtn.UseVisualStyleBackColor = true;
-            this.SendEmailBtn.Click += new System.EventHandler(this.SendEmailBtn_Click);
-            // 
             // frmMainWindow
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -431,8 +431,8 @@
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.statusStrip);
-            this.Controls.Add(this.panelAdPanel);
             this.Controls.Add(this.dgvSearchResults);
+            this.Controls.Add(this.panelAdPanel);
             this.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmMainWindow";
             this.Text = "UWDb";

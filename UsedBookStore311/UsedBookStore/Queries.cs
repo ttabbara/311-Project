@@ -94,6 +94,7 @@ namespace UsedBookStore
                        query = "SELECT * FROM Listing L Where L.BookID IN (SELECT B.BookID FROM Book B WHERE B.Author COLLATE UTF8_GENERAL_CI LIKE " + "'%" + searchText + "%')";
                        break;
                   case "Course Code":
+                        //TODO
                        break;
                   case "ISBN":
                        query = "SELECT * FROM Listing L WHERE L.BookID IN (SELECT B.BookID FROM Book B WHERE B.ISBN = " + "'" + searchText+ "')";
