@@ -111,7 +111,7 @@ namespace UsedBookStore
         {
             if (DatabaseManager.registerUser(txtRegUser, txtRegPW, todo, txtPhone, txtEmail))
             {
-                this.userLogin(new User(txtRegUser, txtPhone, txtEmail));
+                this.userLogin(DatabaseManager.getUserInfo(txtRegUser));
                 return true;
             }
 
@@ -122,11 +122,16 @@ namespace UsedBookStore
         {
             if (DatabaseManager.verifyLogin(txtUser, txtPass))
             {
-                this.userLogin(new User(txtUser));
+                this.userLogin(DatabaseManager.getUserInfo(txtUser));
                 return true;
             }
 
             return false;
+        }
+
+        public DataTable getMyListings(int userID)
+        {
+            return DatabaseManager.getMyListings(userID);
         }
     }
 }

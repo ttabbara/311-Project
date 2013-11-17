@@ -92,6 +92,42 @@ namespace UsedBookStore
 			return false;
 		}
 
+        public static User getUserInfo(string username)
+        {
+            string query = Queries.GET_USER_INFO;
+            using (MySqlConnection myConn = new MySqlConnection(connectionString))
+            {
+                myConn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@userName", username);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        return new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                    }
+                }
+            }
+        }
+
+        public static User getUserInfo(int userID)
+        {
+            string query = Queries.GET_USER_INFO_FROM_ID;
+            using (MySqlConnection myConn = new MySqlConnection(connectionString))
+            {
+                myConn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, myConn))
+                {
+                    cmd.Parameters.AddWithValue("@ID", userID);
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+                        return new User(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetString(3));
+                    }
+                }
+            }
+        }
+
 
 		public static bool registerUser(string userName, string passWord, string salt, string phoneNumber, string email)
 		{
@@ -267,6 +303,25 @@ namespace UsedBookStore
                     DataTable dt = ds.Tables["TEST"];
 
                     return byteArrayToImage(dt.Rows[0]["Image"] as Byte[]);
+                }
+            }
+        }
+
+        public static DataTable getMyListings(int userID)
+        {
+            string query = Queries.GET_MY_LISTINGS;
+            using (MySqlConnection myConn = new MySqlConnection(connectionString))
+            {
+                myConn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, myConn))
+                {                    
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, myConn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@user", userID);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "TEST");
+                    DataTable dt = ds.Tables["TEST"];
+                    
+                    return dt;
                 }
             }
         }
