@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 
+using MySql.Data;
+using MySql.Data.MySqlClient;
+
 namespace UsedBookStore
 {
     public static class Queries
@@ -20,21 +23,20 @@ namespace UsedBookStore
 
 
         //TODO: add faculty and subject and course to book
-        public static string createBookQuery(Book newBook)
+        public static string createBookQuery(MySqlCommand cmd, Book newBook)
         {
-            string query = "INSERT INTO Book VALUES (DEFAULT(BookID), '";
-            query += newBook.Title + "', '";
-            query += newBook.Author + "', ";
-            query += newBook.Edition + ", ";
-            query += newBook.ISBN + ", ";
+            string query = "INSERT INTO Book VALUES (DEFAULT(BookID), @title, @author, @edition, @isbn, NULL)";
 
-            query += "NULL)";
+            cmd.Parameters.AddWithValue("@title", newBook.Title);
+            cmd.Parameters.AddWithValue("@author", newBook.Author);
+            cmd.Parameters.AddWithValue("@edition", newBook.Edition);
+            cmd.Parameters.AddWithValue("@isbn", newBook.ISBN);
 
             return query;
         }
 
         //createBookQuery must be called directly before this query
-        public static string createListingQuery(Listing newListing, Int32 lastIndex, User currentUser)
+        public static string createListingQuery(MySqlCommand cmd, Listing newListing, Int32 lastIndex, User currentUser)
         {
             string condition = "Good";
 
@@ -57,32 +59,17 @@ namespace UsedBookStore
                     break;
             }
 
-            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), '";
+            string query = "INSERT INTO Listing VALUES (DEFAULT(ListingID), @header, @bookid, @price, @desc, @cond, @image, DEFAULT(DELETED), @posterid)";
 
-  //          query += currentUser.ID + ", '";
-            query += newListing.AdHeader + "', ";
-            query += lastIndex + ", ";
-            query += newListing.Price + ", '";
-            query += newListing.Description + "', '";
-            query += condition + "', ";
+            cmd.Parameters.AddWithValue("@header", newListing.AdHeader);
+            cmd.Parameters.AddWithValue("@bookid", lastIndex);
+            cmd.Parameters.AddWithValue("@price", newListing.Price);
+            cmd.Parameters.AddWithValue("@desc", newListing.Description);
+            cmd.Parameters.AddWithValue("@cond", condition);
             
+            cmd.Parameters.AddWithValue("@image", DatabaseManager.imageToByteArray(newListing.Img));
 
-            //output the BLOB (byte array) into the listing
-            if (newListing.Img == null)
-            {
-                query += "DEFAULT(Image), ";
-            }
-            else
-            {
-                query += "@ImageByteArray, ";
-            }
-
-            //deleted date is null by default
-            query += "DEFAULT(Deleted), ";
-
-            query += "'" + currentUser.ID + "')";
-
-            //Debug.WriteLine(query);
+            cmd.Parameters.AddWithValue("@posterid", currentUser.ID);
 
             return query;
         }

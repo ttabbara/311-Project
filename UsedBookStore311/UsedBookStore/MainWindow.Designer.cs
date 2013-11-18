@@ -354,7 +354,7 @@
             // 
             this.lblCondition.AutoSize = true;
             this.lblCondition.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCondition.Location = new System.Drawing.Point(292, 114);
+            this.lblCondition.Location = new System.Drawing.Point(293, 130);
             this.lblCondition.Name = "lblCondition";
             this.lblCondition.Size = new System.Drawing.Size(74, 16);
             this.lblCondition.TabIndex = 4;
@@ -364,7 +364,7 @@
             // 
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(292, 64);
+            this.lblPrice.Location = new System.Drawing.Point(293, 98);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(106, 16);
             this.lblPrice.TabIndex = 3;
@@ -382,7 +382,7 @@
             // 
             // lblAdTitle
             // 
-            this.lblAdTitle.Font = new System.Drawing.Font("Lucida Sans Unicode", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdTitle.Font = new System.Drawing.Font("Lucida Sans Unicode", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdTitle.Location = new System.Drawing.Point(292, 16);
             this.lblAdTitle.Name = "lblAdTitle";
             this.lblAdTitle.Size = new System.Drawing.Size(476, 62);

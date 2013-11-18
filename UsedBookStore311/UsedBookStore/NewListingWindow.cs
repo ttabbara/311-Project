@@ -73,7 +73,7 @@ namespace UsedBookStore
         private void CreateListingBtn_Click(object sender, EventArgs e)
         {
             //create the book
-            string title = this.TitleInput.Text;
+            string title = this.HeadlineInput.Text;
             if (title.Length == 0)
             {
                 this.addError("Please provide a book title.");

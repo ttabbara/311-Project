@@ -102,8 +102,7 @@ namespace UsedBookStore
 	   //searchListings returns a filled DataTable based on the searchBox input
         public DataTable searchListings(string searchText, string searchCriteria)
         {
-           string query = Queries.createSearchQuery(searchText, searchCriteria);
-		   DataTable searchDT = DatabaseManager.getQueryDataSet(query);
+		   DataTable searchDT = DatabaseManager.getQueryDataSet(searchText, searchCriteria);
 		   return searchDT;
         }
 

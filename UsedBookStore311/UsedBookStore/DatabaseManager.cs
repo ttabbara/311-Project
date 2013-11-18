@@ -68,7 +68,18 @@ namespace UsedBookStore
 		public static Image byteArrayToImage(byte[] byteArrayIn)
 		{
 			MemoryStream ms = new MemoryStream(byteArrayIn);
-			Image returnImage = Image.FromStream(ms);
+
+            Image returnImage = null;
+
+            try
+            {
+                returnImage = Image.FromStream(ms);
+            }
+            catch (Exception imageCannotConvert)
+            {
+                return DatabaseManager.getDefaultNoImage();
+            }
+
 			return returnImage;
 		}
 
@@ -242,8 +253,9 @@ namespace UsedBookStore
 				MySqlCommand cmd = conn.CreateCommand();
 
 				//add the book
-				cmd.CommandText = Queries.createBookQuery(newListing.Book);
+				cmd.CommandText = Queries.createBookQuery(cmd, newListing.Book);
 				cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
 
 				//get the last book that was added
 				cmd.CommandText = Queries.GET_LAST_BOOK_ID;
@@ -253,25 +265,28 @@ namespace UsedBookStore
 				reader.Close();
 
 				//add the listing
-				cmd.CommandText = Queries.createListingQuery(newListing, lastIndex, currentUser);
+				cmd.CommandText = Queries.createListingQuery(cmd, newListing, lastIndex, currentUser);
 
                 //only if there is an image
                 if (newListing.Img != null)
 				    cmd.Parameters.AddWithValue("@ImageByteArray", imageToByteArray(newListing.Img));
 
 				cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
 
 				conn.Close();
 			}
 		}
 
-		public static DataTable getQueryDataSet(string query)
+		public static DataTable getQueryDataSet(string searchText, string searchCriteria)
         {
 
             MySqlConnection conn = null;
 
             try
             {
+                string query = Queries.createSearchQuery(searchText, searchCriteria);
+
                 conn = DatabaseManager.getNewConnection();
 
                 //query DB and return results inside DataTable
